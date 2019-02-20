@@ -1,0 +1,178 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_edit_student"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    tools:context="views.ConfigurationActivity">
+
+
+    <TextView
+        android:text="New Game"
+        android:textSize="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/new_game_title" />
+
+
+
+    <TextView
+        android:text="Name:"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_header"
+        android:layout_below="@+id/new_game_title"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="38dp" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Player Name"
+        android:ems="10"
+        android:id="@+id/player_name_input"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/name_header"
+        android:layout_alignParentStart="true" />
+
+
+
+    <TextView
+        android:text="Difficulty:"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/difficulty_header"
+        android:layout_below="@id/player_name_input"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="38dp" />
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/difficulty_header"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:id="@+id/difficulty_spinner" />
+
+
+
+    <TextView
+        android:text="Skill Points:"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/skill_points_header"
+        android:layout_below="@+id/difficulty_spinner"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="38dp" />
+
+    <TextView
+        android:text="Pilot:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/pilot_skill_points_label"
+        android:layout_below="@+id/skill_points_header"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp" />
+    <EditText
+        android:id="@+id/pilot_skill_points_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/pilot_skill_points_label"
+        android:layout_marginLeft="40dp"
+        android:layout_alignBaseline="@id/pilot_skill_points_label"
+        android:inputType="number"
+        android:textSize="12dp"
+        android:text="16" />
+
+    <TextView
+        android:text="Fighter:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fighter_skill_points_label"
+        android:layout_below="@+id/pilot_skill_points_label"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp" />
+    <EditText
+        android:id="@+id/fighter_skill_points_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/fighter_skill_points_label"
+        android:layout_alignBaseline="@id/fighter_skill_points_label"
+        android:layout_alignStart="@id/pilot_skill_points_input"
+        android:inputType="number"
+        android:textSize="12dp"
+        android:text="16" />
+
+    <TextView
+        android:text="Trader:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/trader_skill_points_label"
+        android:layout_below="@+id/fighter_skill_points_label"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp" />
+    <EditText
+        android:id="@+id/trader_skill_points_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/trader_skill_points_label"
+        android:layout_alignBaseline="@id/trader_skill_points_label"
+        android:layout_alignStart="@id/pilot_skill_points_input"
+        android:inputType="number"
+        android:textSize="12dp"
+        android:text="16" />
+
+    <TextView
+        android:text="Engineer:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/engineer_skill_points_label"
+        android:layout_below="@+id/trader_skill_points_label"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp" />
+    <EditText
+        android:id="@+id/engineer_skill_points_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/engineer_skill_points_label"
+        android:layout_alignBaseline="@id/engineer_skill_points_label"
+        android:layout_alignStart="@id/pilot_skill_points_input"
+        android:inputType="number"
+        android:textSize="12dp"
+        android:text="16" />
+
+
+
+    <Button
+        android:text="Continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/continue_button"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp"
+        android:onClick="onContinuePressed" />
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:id="@+id/cancel_button"
+        android:onClick="onCancelPressed" />
+
+
+</RelativeLayout>
