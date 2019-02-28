@@ -31,6 +31,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     private Button continueButton;
     private Button cancelButton;
+    private Button quitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,5 +80,9 @@ public class ConfigurationActivity extends AppCompatActivity {
     public void onCancelPressed(View view) {
         Toast.makeText(this.getApplicationContext(), "Game creation canceled",
                 Toast.LENGTH_LONG).show();
+        finish();
+    }
+    public void onQuitPressed(View view) {
+        finish();
     }
 }

@@ -20,7 +20,5 @@ public class ConfigurationViewModel {
                 " " + player.getShip().getName());
     }
 
-    public void updateGameDifficulty(Difficulty difficulty) {
-        game.setDifficulty(difficulty);
-    }
+    public void updateGameDifficulty(Difficulty difficulty) { game.setDifficulty(difficulty);}
 }
