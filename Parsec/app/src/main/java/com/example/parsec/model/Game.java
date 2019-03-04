@@ -10,6 +10,7 @@ public class Game {
     public Game() {
         this(new Player(), new Ship(), new Universe(), Difficulty.Easy);
     }
+
     public Game(Player player, Ship ship, Universe universe, Difficulty difficulty) {
         this.player = player;
         this.ship = ship;
