@@ -28,16 +28,16 @@
         android:layout_below="@+id/new_game_title"
         android:layout_alignParentStart="true"
         android:layout_marginTop="38dp" />
+
     <EditText
+        android:id="@+id/player_name_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="Player Name"
-        android:ems="10"
-        android:id="@+id/player_name_input"
-        android:layout_marginTop="10dp"
         android:layout_below="@id/name_header"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
 
 
@@ -59,16 +59,15 @@
         android:id="@+id/difficulty_spinner" />
 
 
-
     <TextView
-        android:text="Skill Points:"
-        android:textSize="20dp"
+        android:id="@+id/skill_points_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/skill_points_header"
         android:layout_below="@+id/difficulty_spinner"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="38dp" />
+        android:layout_marginTop="38dp"
+        android:text="Skill Points (must total to 16):"
+        android:textSize="20dp" />
 
     <TextView
         android:text="Pilot:"
@@ -79,16 +78,17 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp" />
+
     <EditText
         android:id="@+id/pilot_skill_points_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/pilot_skill_points_label"
-        android:layout_marginLeft="40dp"
         android:layout_alignBaseline="@id/pilot_skill_points_label"
+        android:layout_marginLeft="40dp"
+        android:layout_toRightOf="@id/pilot_skill_points_label"
         android:inputType="number"
-        android:textSize="12dp"
-        android:text="16" />
+        android:text="4"
+        android:textSize="12dp" />
 
     <TextView
         android:text="Fighter:"
@@ -99,16 +99,17 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp" />
+
     <EditText
         android:id="@+id/fighter_skill_points_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/fighter_skill_points_label"
         android:layout_alignBaseline="@id/fighter_skill_points_label"
         android:layout_alignStart="@id/pilot_skill_points_input"
+        android:layout_toRightOf="@id/fighter_skill_points_label"
         android:inputType="number"
-        android:textSize="12dp"
-        android:text="16" />
+        android:text="4"
+        android:textSize="12dp" />
 
     <TextView
         android:text="Trader:"
@@ -119,16 +120,17 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp" />
+
     <EditText
         android:id="@+id/trader_skill_points_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/trader_skill_points_label"
         android:layout_alignBaseline="@id/trader_skill_points_label"
         android:layout_alignStart="@id/pilot_skill_points_input"
+        android:layout_toRightOf="@id/trader_skill_points_label"
         android:inputType="number"
-        android:textSize="12dp"
-        android:text="16" />
+        android:text="4"
+        android:textSize="12dp" />
 
     <TextView
         android:text="Engineer:"
@@ -139,16 +141,17 @@
         android:layout_alignParentStart="true"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp" />
+
     <EditText
         android:id="@+id/engineer_skill_points_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/engineer_skill_points_label"
         android:layout_alignBaseline="@id/engineer_skill_points_label"
         android:layout_alignStart="@id/pilot_skill_points_input"
+        android:layout_toRightOf="@id/engineer_skill_points_label"
         android:inputType="number"
-        android:textSize="12dp"
-        android:text="16" />
+        android:text="4"
+        android:textSize="12dp" />
 
 
 
