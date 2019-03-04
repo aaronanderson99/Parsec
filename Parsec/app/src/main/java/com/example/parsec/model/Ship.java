@@ -4,9 +4,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Ship {
-<<<<<<< HEAD
     private ShipType type;
+    private Coordinate location;
+    private List<System> systemsInRange = new LinkedList<System>();
 
+    public Ship() {
+        this.type = ShipType.Gnat;
+    }
     public Ship(ShipType type) {
         this.type = type;
     }
@@ -18,9 +22,5 @@ public class Ship {
     public void setName(ShipType type) {
         this.type = type;
     }
-=======
-    private Coordinate location;
-    private List<System> systemsInRange = new LinkedList<System>();
 
->>>>>>> Aaron
 }
