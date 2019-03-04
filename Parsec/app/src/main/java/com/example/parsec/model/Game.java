@@ -18,7 +18,11 @@ public class Game {
         this(new Player(), new Universe(), Difficulty.Easy);
     }
 
+<<<<<<< HEAD
     private Game(Player player, Universe universe, Difficulty difficulty) {
+=======
+    public Game(Player player, Ship ship, Universe universe, Difficulty difficulty) {
+>>>>>>> Aaron
         this.player = player;
         this.universe = universe;
         this.difficulty = difficulty;
