@@ -15,11 +15,8 @@ public class Game {
     /**
      * Default constructor
      */
-<<<<<<< HEAD
-    private Game() {
-=======
+
     public Game() {
->>>>>>> master
         this(new Player(), new Ship(), new Universe(), Difficulty.Easy);
     }
 
