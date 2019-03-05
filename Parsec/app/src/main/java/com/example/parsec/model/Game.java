@@ -54,4 +54,11 @@ public class Game {
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
+
+    public Ship getShip() {
+        return this.ship;
+    }
+    public void setShip(Ship ship) {
+        this.ship = ship;
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.parsec.views;
 
 import android.arch.lifecycle.ViewModelProvider;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -74,6 +75,9 @@ public class ConfigurationActivity extends AppCompatActivity {
             configViewModel.updateGameDifficulty((Difficulty) difficultySpinner.getSelectedItem());
             Toast.makeText(this.getApplicationContext(), "New game created",
                     Toast.LENGTH_LONG).show();
+
+            Intent cont = new Intent(this, SystemActivity.class);
+            startActivity(cont);
         }
     }
 

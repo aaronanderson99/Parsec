@@ -1,18 +1,19 @@
 package com.example.parsec.model;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Universe {
 
-    private HashMap<Integer, System> systems = new HashMap();
-    private int[][] map = new int[100][150];
+    private Map<Integer, System> systems = new HashMap();
+    private int[][] map = new int[16][10];
 
 
-    public Universe generateDefaultUniverse() {
+    public static Universe generateDefaultUniverse() {
         Universe universe = new Universe();
-        for(int i = 0; i < map.length; i++) {
-            for(int j = 0; j < map[0].length; j++) {
-                map[i][j] = 0;
+        for(int i = 0; i < universe.map.length; i++) {
+            for(int j = 0; j < universe.map[0].length; j++) {
+                universe.map[i][j] = 0;
             }
         }
 
@@ -21,7 +22,7 @@ public class Universe {
         System Othello = new System(1, "Othello", TechLevel.PRE_AGRICULTURE, Characteristics.NOSPECIALRESOURCES, new Coordinate(10,4));
         universe.addSystem(Othello);
 
-        System Iago = new System(2, "Iago", TechLevel.PRE_AGRICULTURE, Characteristics.NOSPECIALRESOURCES, new Coordinate(11,4));
+        System Iago = new System(2, "Iago    ", TechLevel.PRE_AGRICULTURE, Characteristics.NOSPECIALRESOURCES, new Coordinate(11,4));
         universe.addSystem(Iago);
 
         System Emilia = new System(3, "Emilia", TechLevel.PRE_AGRICULTURE, Characteristics.NOSPECIALRESOURCES, new Coordinate(10,6));
@@ -29,7 +30,7 @@ public class Universe {
 
 
         // King Lear
-        System Lear = new System(4, "Lear", TechLevel.PRE_AGRICULTURE, Characteristics.NOSPECIALRESOURCES, new Coordinate(13,4));
+        System Lear = new System(4, "Lear    ", TechLevel.PRE_AGRICULTURE, Characteristics.NOSPECIALRESOURCES, new Coordinate(13,4));
         universe.addSystem(Lear);
 
         System Cordelia = new System(5, "Cordelia", TechLevel.PRE_AGRICULTURE, Characteristics.NOSPECIALRESOURCES, new Coordinate(13,5));
@@ -170,6 +171,18 @@ public class Universe {
             }
             s = s + "\n\n\n\n";
         }
+        return s;
+    }
+
+    public String toString() {
+        String s = "";
+
+        for (Map.Entry<Integer, System> entry : systems.entrySet()) {
+            System sys = entry.getValue();
+            s = s + "Name: " + sys.getName() + "\t\tID: " + sys.getId() + "\t\tLocation: (" + sys.getLocation().getX() + ", " + sys.getLocation().getY()
+                    + ")\t\tTech Level: " + sys.getTechLevel().toString() + "\t\tCharacteristic: " + sys.getCharacteristic().toString() + "\n";
+        }
+
         return s;
     }
 

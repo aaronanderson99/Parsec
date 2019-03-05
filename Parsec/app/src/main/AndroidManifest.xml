@@ -23,6 +23,8 @@
         <activity
             android:name=".views.ConfigurationActivity"
             android:parentActivityName=".views.MainActivity" />
+        <activity
+            android:name=".views.SystemActivity" />
 
     </application>
 

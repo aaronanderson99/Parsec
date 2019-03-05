@@ -25,6 +25,12 @@ public class System {
     public void setLocation(Coordinate location) {
         this.location = location;
     }
+    public void setTechLevel(TechLevel techLevel) {
+        this.techLevel = techLevel;
+    }
+    public void setCharacteristic(Characteristics characteristic) {
+        this.characteristic = characteristic;
+    }
 
     public String getName() {
         return this.name;
@@ -35,7 +41,12 @@ public class System {
     public Coordinate getLocation() {
         return location;
     }
-
+    public TechLevel getTechLevel() {
+        return this.techLevel;
+    }
+    public Characteristics getCharacteristic() {
+        return this.characteristic;
+    }
 
     public double getDistance(System s2) {
         return location.getDistance(s2.getLocation());
