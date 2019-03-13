@@ -9,7 +9,7 @@ public class Ship {
     private List<System> systemsInRange = new LinkedList<System>();
 
     public Ship() {
-        this.type = ShipType.Gnat;
+        this(ShipType.Gnat);
     }
     public Ship(ShipType type) {
         this.type = type;
@@ -18,9 +18,16 @@ public class Ship {
     public ShipType getName() {
         return type;
     }
-
     public void setName(ShipType type) {
         this.type = type;
+    }
+
+    // generate list of systems
+    public void findSystemsInRange() {
+
+    }
+    public List<System> getSystemsInRange() {
+        return systemsInRange;
     }
 
 }
