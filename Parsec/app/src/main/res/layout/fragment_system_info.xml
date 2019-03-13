@@ -1,89 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/system_name"
-        android:layout_width="127dp"
-        android:layout_height="wrap_content"
+        android:layout_width="216dp"
+        android:layout_height="43dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="274dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="91dp"
+        android:layout_marginEnd="159dp"
         android:text="System Name:" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/system_name_input"
-        android:layout_width="380dp"
-        android:layout_height="48dp"
+    <EditText
+        android:id="@+id/name_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/system_name"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="19dp" />
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="-28dp"
+        android:layout_marginEnd="164dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/system_tech_level"
-        android:layout_width="104dp"
+        android:layout_width="257dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/system_name_input"
+        android:layout_below="@+id/name_line"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginEnd="294dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="118dp"
         android:text="Tech Level:" />
 
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/system_tech_level_input"
-        android:layout_width="369dp"
-        android:layout_height="41dp"
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/system_tech_level"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="29dp">
-
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="395dp"
-            android:layout_height="44dp"
-            android:layout_alignStart="@+id/null"
-            android:layout_alignTop="@+id/null"
-            android:hint="hint" />
-    </android.support.design.widget.TextInputLayout>
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="163dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/system_charac"
-        android:layout_width="124dp"
-        android:layout_height="33dp"
-        android:layout_below="@+id/system_tech_level_input"
+        android:id="@+id/system_characteristic"
+        android:layout_width="276dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText7"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="277dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="100dp"
         android:text="Characteristics:" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="377dp"
-        android:layout_height="43dp"
-        android:layout_below="@+id/system_charac"
+    <EditText
+        android:id="@+id/editText8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/system_characteristic"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="17dp">
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="-9dp"
+        android:layout_marginEnd="164dp"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
-        <android.support.design.widget.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/null"
-            android:layout_alignTop="@+id/null"
-            android:hint="hint" />
-    </android.support.design.widget.TextInputLayout>
-
+    <TextView
+        android:id="@+id/system_title"
+        android:layout_width="267dp"
+        android:layout_height="51dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="70dp"
+        android:text="System Information"
+        android:textAlignment="center"
+        android:textSize="25sp" />
 </RelativeLayout>

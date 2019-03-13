@@ -3,14 +3,14 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/system_name"
+        android:id="@+id/marketplace"
         android:layout_width="343dp"
         android:layout_height="61dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="71dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="33dp"
         android:text="Marketplace"
         android:textAlignment="center"
@@ -18,14 +18,14 @@
 
     <TextView
         android:id="@+id/system_currency"
-        android:layout_width="113dp"
+        android:layout_width="195dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/system_name"
+        android:layout_below="@+id/marketplace"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="51dp"
-        android:layout_marginEnd="263dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="184dp"
         android:text="Your currency:" />
 
     <View
@@ -36,30 +36,184 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="57dp"
+        android:layout_marginTop="93dp"
         android:layout_marginEnd="0dp"
         android:background="?android:attr/listDivider" />
 
+    <EditText
+        android:id="@+id/currency_text"
+        android:layout_width="wrap_content"
+        android:layout_height="29dp"
+        android:layout_below="@+id/system_currency"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="167dp"
+        android:ems="10"
+        android:inputType="number" />
+
     <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/market_table"
+        android:layout_width="394dp"
+        android:layout_height="432dp"
         android:layout_below="@+id/divider"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="137dp"
-        android:layout_marginBottom="332dp"
-        android:background="#000000"
-        android:scrollbars="vertical"
-        android:showDividers="middle|beginning|end">
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="84dp"
+        android:scrollbars="horizontal|vertical">
 
         <TableRow
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/null"
-            android:layout_alignEnd="@+id/null"
-            android:layout_margin="1dp"
-            android:background="#FFFFFF">
-            ...
+            android:id="@+id/row1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center">
+
+
+            <TextView
+                android:id="@+id/resource"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:text="Resource"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:text="Price"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/num_available"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:text="Number Available"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/num_cargo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:text="Number in Cargo"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/select"
+                android:layout_width="52dp"
+                android:layout_height="match_parent"
+                android:layout_column="1"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
+                android:text="Select"
+                android:textAlignment="center" />
+
         </TableRow>
+
+        <TableRow
+            android:id="@+id/row2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <TableRow
+            android:id="@+id/row3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:id="@+id/row4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:id="@+id/row5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:id="@+id/row6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:id="@+id/row7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:id="@+id/row8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:id="@+id/row9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:id="@+id/row10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:id="@+id/row11"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </TableLayout>
+
+    <CheckBox
+        android:id="@+id/check1"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/market_table"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="350dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="4dp" />
+
+    <Button
+        android:id="@+id/buy_button"
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/market_table"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="-69dp"
+        android:layout_marginEnd="235dp"
+        android:layout_marginBottom="20dp"
+        android:text="Buy" />
+
+    <Button
+        android:id="@+id/sell_button"
+        android:layout_width="145dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/market_table"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="-69dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="20dp"
+        android:text="Sell" />
 
 </RelativeLayout>
