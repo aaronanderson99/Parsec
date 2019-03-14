@@ -23,7 +23,7 @@ public class Market {
             return true;   // All good!
         }
     }
-    public boolean canSell(Resource resource, int num) {
+    public boolean canSell(Resource resource) {
         if(resource.getMTLU() > techLevel.getLevelCode()) {
             return false;   // Tech Level too low!
         }

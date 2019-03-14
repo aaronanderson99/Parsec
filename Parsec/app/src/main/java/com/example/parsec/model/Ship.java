@@ -47,11 +47,11 @@ public class Ship {
         return cargo;
     }
 
-    public int buy(Resource resource, int num) {
-        return cargo.buy(resource, num);
+    public void buy(Resource resource, int num) {
+        cargo.buy(resource, num);
     }
-    public int sell(Resource resource, int num) {
-        return cargo.buy(resource, num);
+    public void sell(Resource resource, int num) {
+        cargo.sell(resource, num);
     }
 
 }

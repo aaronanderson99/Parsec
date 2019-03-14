@@ -22,11 +22,11 @@ public class Cargo {
         return maxCargo - cargoFilled;
     }
 
-    public int buy(Resource resource, int num) {
-        return 0;
+    public void buy(Resource resource, int num) {
+        cargo[resource.getCode()] += num;
     }
-    public int sell(Resource resource, int num) {
-        return 0;
+    public void sell(Resource resource, int num) {
+        cargo[resource.getCode()] -= num;
     }
 
 }

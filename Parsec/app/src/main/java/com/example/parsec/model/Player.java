@@ -84,27 +84,33 @@ public class Player {
 
 
     // returns true if successful, false if unsuccessful
-    public boolean buy(Resource resource, double cost, int num, Market market) {
-        if(cost*num > credits.getCredits()) {
-            // TOO EXPENSIVE !!!
-            return false;
+    public boolean buy(Resource resource, int num) {
+        Market market = ship.getCurrentSystem().getMarket();
+        if(!market.canBuy(resource)) {
+            return false;       // TECH LEVEL TOO LOW !!!
+        } else if(market.getMarketPrice(resource)*num > credits.getCredits()) {
+            return false;       // TOO EXPENSIVE !!!
         } else if (num > ship.getCargo().getRemainingCargo()) {
-            // NOT ENOUGH SPACE !!!
-            return false;
-        } else if(!market.canBuy(resource)) {
-            // TECH LEVEL TOO LOW !!!
-            return false;
-        }
-        else {
-            credits.buy(cost*num);
+            return false;       // NOT ENOUGH SPACE !!!
+        } else {
+            credits.buy(market.getMarketPrice(resource)*num);
             ship.buy(resource, num);
             return true;
         }
     }
 
-    // returns 0 if successful, 1 if unsuccessful
-    public int sell(Resource resource, double cost, int num) {
-        return 0;
+    // returns true if successful, false if unsuccessful
+    public boolean sell(Resource resource, int num) {
+        Market market = ship.getCurrentSystem().getMarket();
+        if(!market.canSell(resource)) {
+            return false;       // TECH LEVEL TOO LOW !!!
+        } else if (num > ship.getCargo().getCargoStock(resource)) {
+            return false;       // DON'T HAVE RESOURCES !!!
+        } else {
+            credits.sell(market.getMarketPrice(resource)*num);
+            ship.sell(resource, num);
+            return true;
+        }
     }
 
 }
