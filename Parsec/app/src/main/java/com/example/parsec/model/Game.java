@@ -6,7 +6,6 @@ package com.example.parsec.model;
 public class Game {
 
     private Player player;
-    private Ship ship;
     private Universe universe;
     private Difficulty difficulty;
 
@@ -17,12 +16,11 @@ public class Game {
      */
 
     public Game() {
-        this(new Player(), new Ship(ShipType.Gnat), Universe.generateDefaultUniverse(), Difficulty.Easy);
+        this(new Player(), Universe.generateDefaultUniverse(), Difficulty.Easy);
     }
 
-    public Game(Player player, Ship ship, Universe universe, Difficulty difficulty) {
+    public Game(Player player, Universe universe, Difficulty difficulty) {
         this.player = player;
-        this.ship = ship;
         this.universe = universe;
         this.difficulty = difficulty;
     }
@@ -55,10 +53,4 @@ public class Game {
         this.difficulty = difficulty;
     }
 
-    public Ship getShip() {
-        return this.ship;
-    }
-    public void setShip(Ship ship) {
-        this.ship = ship;
-    }
 }

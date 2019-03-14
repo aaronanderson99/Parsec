@@ -5,14 +5,15 @@ import java.util.List;
 
 public class Ship {
     private ShipType type;
-    private Coordinate location;
+    private System currentSystem;
     private List<System> systemsInRange = new LinkedList<System>();
+    private Cargo cargo;
 
-    public Ship() {
-        this(ShipType.Gnat);
-    }
+
+
     public Ship(ShipType type) {
         this.type = type;
+        this.cargo = new Cargo(type.getMaxCargo());
     }
 
     public ShipType getName() {
@@ -21,13 +22,36 @@ public class Ship {
     public void setName(ShipType type) {
         this.type = type;
     }
-
-    // generate list of systems
-    public void findSystemsInRange() {
-
+    public System getCurrentSystem() {
+        return this.currentSystem;
     }
+    public void setCurrentSystem(System system) {
+        this.currentSystem = system;
+    }
+
+    public void findSystemsInRange() {
+        // generate list of systems
+    }
+
     public List<System> getSystemsInRange() {
         return systemsInRange;
+    }
+
+    public void jump(System system) {
+        // generate random event
+        // generate system conditions
+        // update location
+    }
+
+    public Cargo getCargo() {
+        return cargo;
+    }
+
+    public int buy(Resource resource, int num) {
+        return cargo.buy(resource, num);
+    }
+    public int sell(Resource resource, int num) {
+        return cargo.buy(resource, num);
     }
 
 }

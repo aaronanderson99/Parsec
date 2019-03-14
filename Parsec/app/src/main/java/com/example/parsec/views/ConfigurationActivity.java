@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.parsec.R;
 import com.example.parsec.model.Difficulty;
+import com.example.parsec.model.Ship;
+import com.example.parsec.model.ShipType;
 import com.example.parsec.viewmodels.ConfigurationViewModel;
 import com.example.parsec.model.Player;
 
@@ -70,7 +72,7 @@ public class ConfigurationActivity extends AppCompatActivity {
         } else {
             String playerName = playerNameInput.getText().toString();
 
-            configViewModel.createPlayer(new Player(playerName, pilotPoints, fighterPoints,
+            configViewModel.createPlayer(new Player(playerName, new Ship(ShipType.Gnat), pilotPoints, fighterPoints,
                     traderPoints, engineerPoints, 1000));
             configViewModel.updateGameDifficulty((Difficulty) difficultySpinner.getSelectedItem());
             Toast.makeText(this.getApplicationContext(), "New game created",

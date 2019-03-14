@@ -9,24 +9,25 @@ public class Player {
     private int traderSkill;
     private int engineerSkill;
 
-    private double credits;
+    private Credits credits;
+
 
     /**
      * Default constructor, creates new Player named Bob,
      * with 16 skill points divided evenly across attributes
      */
     public Player() {
-        this("Bob", 4, 4, 4, 4, 1000);
+        this("Bob", new Ship(ShipType.Gnat), 4, 4, 4, 4, 1000);
     }
 
-    public Player(String name, int pilotSkill, int fighterSkill, int traderSkill, int engineerSkill, double credits) {
+    public Player(String name, Ship ship, int pilotSkill, int fighterSkill, int traderSkill, int engineerSkill, double credits) {
         this.name = name;
+        this.ship = ship;
         this.pilotSkill = pilotSkill;
         this.fighterSkill = fighterSkill;
         this.traderSkill = traderSkill;
         this.engineerSkill = engineerSkill;
-        this.credits = credits;
-        this.ship = new Ship(ShipType.Gnat);
+        this.credits = new Credits(credits);
     }
 
     public String getName() {
@@ -77,11 +78,33 @@ public class Player {
         this.engineerSkill = engineerSkill;
     }
 
-    public double getCredits() {
-        return credits;
+    public Credits getCredits() {
+        return this.credits;
     }
 
-    public void setCredits(double credits) {
-        this.credits = credits;
+
+    // returns true if successful, false if unsuccessful
+    public boolean buy(Resource resource, double cost, int num, Market market) {
+        if(cost*num > credits.getCredits()) {
+            // TOO EXPENSIVE !!!
+            return false;
+        } else if (num > ship.getCargo().getRemainingCargo()) {
+            // NOT ENOUGH SPACE !!!
+            return false;
+        } else if(!market.canBuy(resource)) {
+            // TECH LEVEL TOO LOW !!!
+            return false;
+        }
+        else {
+            credits.buy(cost*num);
+            ship.buy(resource, num);
+            return true;
+        }
     }
+
+    // returns 0 if successful, 1 if unsuccessful
+    public int sell(Resource resource, double cost, int num) {
+        return 0;
+    }
+
 }
