@@ -4,15 +4,17 @@ public class System {
     private int id;
     private String name;
     private Coordinate location;
-    TechLevel techLevel;
-    Characteristics characteristic;
+    private Market market;
+    private TechLevel techLevel;
+    private Characteristic characteristic;
 
-    public System(int id, String name, TechLevel techLevel, Characteristics characteristic, Coordinate location) {
+    public System(int id, String name, TechLevel techLevel, Characteristic characteristic, Coordinate location) {
         this.id = id;
         this.name = name;
         this.techLevel = techLevel;
         this.characteristic = characteristic;
         this.location = location;
+        this.market = new Market(techLevel, characteristic);
     }
 
 
@@ -28,8 +30,11 @@ public class System {
     public void setTechLevel(TechLevel techLevel) {
         this.techLevel = techLevel;
     }
-    public void setCharacteristic(Characteristics characteristic) {
+    public void setCharacteristic(Characteristic characteristic) {
         this.characteristic = characteristic;
+    }
+    public void setMarket(Market market) {
+        this.market = market;
     }
 
     public String getName() {
@@ -44,8 +49,11 @@ public class System {
     public TechLevel getTechLevel() {
         return this.techLevel;
     }
-    public Characteristics getCharacteristic() {
+    public Characteristic getCharacteristic() {
         return this.characteristic;
+    }
+    public Market getMarket() {
+        return this.market;
     }
 
     public double getDistance(System s2) {

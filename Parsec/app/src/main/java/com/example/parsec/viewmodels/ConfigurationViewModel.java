@@ -15,13 +15,14 @@ public class ConfigurationViewModel {
     public void createPlayer(Player player) {
         game.setPlayer(player);
         game.setUniverse(Universe.generateDefaultUniverse());
-        game.setShip(new Ship(ShipType.Gnat));
+        player.getShip().setCurrentSystem(game.getUniverse().getSystem(5));
+        player.getShip().getCurrentSystem().getMarket().generateMarket();
         Log.i("Player created successfully", "\n" + player.getName() +
                 String.format(" %d", player.getPilotSkill()) +
                 String.format(" %d", player.getFighterSkill()) +
                 String.format(" %d", player.getTraderSkill()) +
                 String.format(" %d", player.getEngineerSkill()) +
-                String.format(" %f", player.getCredits()) +
+                String.format(" %f", player.getCredits().getCredits()) +
                 " " + player.getShip().getName());
 
         Log.i("\nUniverse created successfully", "\n" + game.getUniverse().toString());
