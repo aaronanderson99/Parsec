@@ -17,7 +17,7 @@
         android:textSize="25sp" />
 
     <TextView
-        android:id="@+id/system_currency"
+        android:id="@+id/credits_label"
         android:layout_width="195dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/marketplace"
@@ -32,7 +32,7 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/system_currency"
+        android:layout_below="@+id/credits_label"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
@@ -44,7 +44,7 @@
         android:id="@+id/currency_text"
         android:layout_width="wrap_content"
         android:layout_height="29dp"
-        android:layout_below="@+id/system_currency"
+        android:layout_below="@+id/credits_label"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="31dp"

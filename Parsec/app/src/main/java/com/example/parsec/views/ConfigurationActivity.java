@@ -78,7 +78,7 @@ public class ConfigurationActivity extends AppCompatActivity {
             Toast.makeText(this.getApplicationContext(), "New game created",
                     Toast.LENGTH_LONG).show();
 
-            Intent cont = new Intent(this, SystemActivity.class);
+            Intent cont = new Intent(this, TEMP_SystemActivity.class); ////////////////// changed to TEMP_SystemActivity.class
             startActivity(cont);
         }
     }
