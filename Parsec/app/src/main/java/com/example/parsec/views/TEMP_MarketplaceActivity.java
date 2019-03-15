@@ -55,6 +55,7 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
         buy = findViewById(R.id.buy_button);
         sell = findViewById(R.id.sell_button);
         quantity = findViewById(R.id.quantity);
+        quantity.setText("1");
 
 
         ArrayAdapter<Resource> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
