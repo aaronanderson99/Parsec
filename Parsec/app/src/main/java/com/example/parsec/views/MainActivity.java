@@ -22,4 +22,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(newGame);
     }
 
+    public void onLoadGamePressed(View view) {
+    }
+
 }

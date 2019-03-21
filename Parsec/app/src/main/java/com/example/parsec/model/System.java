@@ -7,6 +7,8 @@ public class System {
     private Market market;
     private TechLevel techLevel;
     private Characteristic characteristic;
+    // Distance from current system. Used in jumping, only matters if the system is within range, else can be anything.
+    private double distance;
 
     public System(int id, String name, TechLevel techLevel, Characteristic characteristic, Coordinate location) {
         this.id = id;
@@ -36,6 +38,9 @@ public class System {
     public void setMarket(Market market) {
         this.market = market;
     }
+    public void setDistance(double distance) {
+        this.distance = distance;
+    }
 
     public String getName() {
         return this.name;
@@ -55,7 +60,9 @@ public class System {
     public Market getMarket() {
         return this.market;
     }
-
+    public double getDistance() {
+        return this.distance;
+    }
     public double getDistance(System s2) {
         return location.getDistance(s2.getLocation());
     }
