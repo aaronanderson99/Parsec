@@ -45,6 +45,8 @@ public class Ship {
         if(systemsInRange.contains(system)) {
             currentSystem = system;
             fuelTank.jump(system.getDistance());
+            system.getMarket().generateMarket();
+            findSystemsInRange();
         }
     }
 
@@ -61,12 +63,16 @@ public class Ship {
 
     public void refuel() {
         fuelTank.refuel();
+        findSystemsInRange();
     }
     public double getFuel() {
         return fuelTank.getFuel();
     }
     public double getFuelSpace() {
         return fuelTank.getFuelSpace();
+    }
+    public double getMaxFuel() {
+        return fuelTank.getMaxFuel();
     }
 
 }

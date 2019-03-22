@@ -180,8 +180,8 @@ public class Universe {
         int x = ship.getCurrentSystem().getLocation().getX();
         int y = ship.getCurrentSystem().getLocation().getY();
 
-        for(int i = x - (int)(range + 1); i < x + (int)(range + 1); i++) {
-            for(int j = y - (int)(range + 1); j < y + (int)(range + 1); j++) {
+        for(int i = Math.max(x - (int)(range + 1), 0); i < Math.min(x + (int)(range + 1), map.length - 1); i++) {
+            for(int j = Math.max(y - (int)(range + 1), 0); j < Math.min(y + (int)(range + 1), map[0].length); j++) {
                 if(map[i][j] != 0) {
                     double distance = Math.sqrt((x - i) * (x - i) + (y - j) * (y - j));
                     if (distance < range) {

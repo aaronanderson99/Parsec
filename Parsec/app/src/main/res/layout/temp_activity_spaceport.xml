@@ -7,24 +7,24 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/resource_label"
+        android:id="@+id/system_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="148dp"
-        android:text="Resource:"
+        android:text="System:"
         android:textAppearance="@style/TextAppearance.AppCompat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/marketplace_header"
+        android:id="@+id/spaceport_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="34dp"
-        android:text="Marketplace"
+        android:text="Spaceport"
         android:textAlignment="center"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,131 +32,131 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/credits_label"
+        android:id="@+id/credits_label2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginBottom="48dp"
         android:text="Credits:"
-        app:layout_constraintBottom_toTopOf="@+id/sell_button"
+        app:layout_constraintBottom_toTopOf="@+id/jump_button"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/cost_label"
+        android:id="@+id/distance_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="56dp"
-        android:text="Cost:"
+        android:text="Distance:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resource_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/system_spinner" />
 
     <TextView
-        android:id="@+id/stock_label"
+        android:id="@+id/fuel_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
-        android:text="In Cargo:"
-        app:layout_constraintEnd_toStartOf="@+id/in_cargo"
-        app:layout_constraintTop_toBottomOf="@+id/resource_spinner" />
+        android:text="Fuel:"
+        app:layout_constraintEnd_toStartOf="@+id/fuel"
+        app:layout_constraintTop_toBottomOf="@+id/system_spinner" />
 
     <TextView
-        android:id="@+id/cargo_label"
+        android:id="@+id/fuel_cost_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="48dp"
-        android:text="Cargo:"
-        app:layout_constraintBottom_toTopOf="@+id/sell_button"
-        app:layout_constraintEnd_toStartOf="@+id/cargo" />
+        android:text="Cost to Refuel:"
+        app:layout_constraintBottom_toTopOf="@+id/jump_button"
+        app:layout_constraintEnd_toStartOf="@+id/fuel_cost" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/credits_label"
+        android:layout_below="@+id/credits_label2"
         android:layout_marginTop="93dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/credits_label" />
+        app:layout_constraintTop_toBottomOf="@+id/credits_label2" />
 
     <TextView
-        android:id="@+id/credits"
+        android:id="@+id/credits2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="48dp"
         android:text="credits"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        app:layout_constraintBottom_toTopOf="@+id/sell_button"
-        app:layout_constraintStart_toEndOf="@+id/credits_label" />
+        app:layout_constraintBottom_toTopOf="@+id/jump_button"
+        app:layout_constraintStart_toEndOf="@+id/credits_label2" />
 
     <TextView
-        android:id="@+id/cost"
+        android:id="@+id/distance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="56dp"
-        android:text="cost"
+        android:text="distance"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        app:layout_constraintStart_toEndOf="@+id/cost_label"
-        app:layout_constraintTop_toBottomOf="@+id/resource_spinner" />
+        app:layout_constraintStart_toEndOf="@+id/distance_label"
+        app:layout_constraintTop_toBottomOf="@+id/system_spinner" />
 
     <TextView
-        android:id="@+id/in_cargo"
+        android:id="@+id/fuel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="48dp"
-        android:text="incargo"
+        android:text="fuel"
         android:textAppearance="@style/TextAppearance.AppCompat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resource_spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/system_spinner" />
 
     <TextView
-        android:id="@+id/cargo"
+        android:id="@+id/fuel_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="48dp"
         android:layout_marginBottom="48dp"
-        android:text="cargo"
+        android:text="fuelcost"
         android:textAppearance="@style/TextAppearance.AppCompat"
-        app:layout_constraintBottom_toTopOf="@+id/sell_button"
+        app:layout_constraintBottom_toTopOf="@+id/jump_button"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Spinner
-        android:id="@+id/resource_spinner"
+        android:id="@+id/system_spinner"
         android:layout_width="239dp"
         android:layout_height="32dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resource_label" />
+        app:layout_constraintTop_toBottomOf="@+id/system_label" />
 
     <Button
-        android:id="@+id/buy_button"
+        android:id="@+id/refuel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="32dp"
-        android:text="BUY"
+        android:onClick="onRefuelPressed"
+        android:text="REFUEL"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:onClick="onBuyPressed" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/sell_button"
+        android:id="@+id/jump_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="32dp"
-        android:text="SELL"
+        android:onClick="onJumpPressed"
+        android:text="JUMP"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buy_button"
-        android:onClick="onSellPressed" />
+        app:layout_constraintStart_toEndOf="@+id/refuel_button" />
 
     <EditText
         android:id="@+id/quantity"

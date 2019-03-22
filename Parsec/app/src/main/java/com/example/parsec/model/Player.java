@@ -82,6 +82,9 @@ public class Player {
         return this.credits;
     }
 
+    public void jump(System system) {
+        ship.jump(system);
+    }
 
     // returns true if successful, false if unsuccessful
     public boolean buy(Resource resource, int num) {
@@ -111,6 +114,16 @@ public class Player {
             ship.sell(resource, num);
             return true;
         }
+    }
+
+    // returns true if successful, false if unsuccessful
+    public boolean refuel() {
+        if(credits.getCredits() < ship.getFuelSpace() * 10) {
+            return false;
+        }
+        credits.buy(ship.getFuelSpace() * 10);
+        ship.refuel();
+        return true;
     }
 
 }

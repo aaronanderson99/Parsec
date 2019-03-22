@@ -17,6 +17,7 @@ public class ConfigurationViewModel {
         game.setUniverse(Universe.generateDefaultUniverse());
         player.getShip().setCurrentSystem(game.getUniverse().getSystem(5));
         player.getShip().getCurrentSystem().getMarket().generateMarket();
+        player.getShip().findSystemsInRange();
         Log.i("Player created successfully", "\n" + player.getName() +
                 String.format(" %d", player.getPilotSkill()) +
                 String.format(" %d", player.getFighterSkill()) +
