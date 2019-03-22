@@ -1,13 +1,14 @@
 package com.example.parsec.model;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class Universe {
 
     private Map<Integer, System> systems = new HashMap();
     private int[][] map = new int[16][10];
-
 
     public static Universe generateDefaultUniverse() {
         Universe universe = new Universe();
@@ -170,6 +171,27 @@ public class Universe {
     }
     public System getSystem(Coordinate c) {
         return systems.get(map[c.getX()][c.getY()]);
+    }
+
+    public List<System> getSystemsInRange() {
+        List<System> systems = new LinkedList<System>();
+        Ship ship = Game.getInstance().getPlayer().getShip();
+        double range = ship.getFuel();
+        int x = ship.getCurrentSystem().getLocation().getX();
+        int y = ship.getCurrentSystem().getLocation().getY();
+
+        for(int i = Math.max(x - (int)(range + 1), 0); i < Math.min(x + (int)(range + 1), map.length - 1); i++) {
+            for(int j = Math.max(y - (int)(range + 1), 0); j < Math.min(y + (int)(range + 1), map[0].length); j++) {
+                if(map[i][j] != 0) {
+                    double distance = Math.sqrt((x - i) * (x - i) + (y - j) * (y - j));
+                    if (distance < range) {
+                        getSystem(map[i][j]).setDistance(distance);
+                        systems.add(getSystem(map[i][j]));
+                    }
+                }
+            }
+        }
+        return systems;
     }
 
     public String mapToString() {

@@ -33,6 +33,9 @@
         <activity
             android:name=".views.TEMP_MarketplaceActivity"
             android:parentActivityName=".views.TEMP_SystemActivity"/>
+        <activity
+            android:name=".views.TEMP_SpaceportActivity"
+            android:parentActivityName=".views.TEMP_SystemActivity"/>
 
 
     </application>

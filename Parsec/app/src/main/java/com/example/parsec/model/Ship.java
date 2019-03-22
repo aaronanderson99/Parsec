@@ -8,12 +8,14 @@ public class Ship {
     private System currentSystem;
     private List<System> systemsInRange = new LinkedList<System>();
     private Cargo cargo;
+    private FuelTank fuelTank;
 
 
 
     public Ship(ShipType type) {
         this.type = type;
         this.cargo = new Cargo(type.getMaxCargo());
+        this.fuelTank = new FuelTank(type.getMaxFuel());
     }
 
     public ShipType getName() {
@@ -31,6 +33,8 @@ public class Ship {
 
     public void findSystemsInRange() {
         // generate list of systems
+        Universe universe = Game.getInstance().getUniverse();
+        systemsInRange = universe.getSystemsInRange();
     }
 
     public List<System> getSystemsInRange() {
@@ -38,9 +42,12 @@ public class Ship {
     }
 
     public void jump(System system) {
-        // generate random event
-        // generate system conditions
-        // update location
+        if(systemsInRange.contains(system)) {
+            currentSystem = system;
+            fuelTank.jump(system.getDistance());
+            system.getMarket().generateMarket();
+            findSystemsInRange();
+        }
     }
 
     public Cargo getCargo() {
@@ -52,6 +59,20 @@ public class Ship {
     }
     public void sell(Resource resource, int num) {
         cargo.sell(resource, num);
+    }
+
+    public void refuel() {
+        fuelTank.refuel();
+        findSystemsInRange();
+    }
+    public double getFuel() {
+        return fuelTank.getFuel();
+    }
+    public double getFuelSpace() {
+        return fuelTank.getFuelSpace();
+    }
+    public double getMaxFuel() {
+        return fuelTank.getMaxFuel();
     }
 
 }

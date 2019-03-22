@@ -108,8 +108,8 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
         String playerCargo = player.getShip().getCargo().getCargoFilled() + " / " + player.getShip().getCargo().getMaxCargo();
         int inPlayerCargo = player.getShip().getCargo().getCargoStock((Resource) resourceSpinner.getSelectedItem());
 
-        cost.setText("" + price);
-        credits.setText("" + playerCredits);
+        cost.setText("" + Math.floor(price * 100) / 100);
+        credits.setText("" + Math.floor(playerCredits * 100) / 100);
         cargo.setText("" + playerCargo);
         inCargo.setText("" + inPlayerCargo);
     }

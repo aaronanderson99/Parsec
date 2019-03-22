@@ -42,12 +42,10 @@ public class TEMP_SystemActivity extends AppCompatActivity {
         spaceStation = findViewById(R.id.space_station_button);
         marketPlace = findViewById(R.id.marketplace_button);
 
-
-
     }
 
     public void onSpaceStationPressed(View view) {
-        Intent spaceStation = new Intent(this, TEMP_SystemActivity.class);
+        Intent spaceStation = new Intent(this, TEMP_SpaceportActivity.class);
         startActivity(spaceStation);
     }
     public void onMarketPlacePressed(View view) {
