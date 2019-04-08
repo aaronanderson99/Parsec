@@ -13,6 +13,9 @@ import com.example.parsec.R;
 import com.example.parsec.model.Game;
 import com.example.parsec.model.System;
 
+/**
+ * The type Temp system activity.
+ */
 public class TEMP_SystemActivity extends AppCompatActivity {
 
     private TextView systemName;
@@ -44,10 +47,21 @@ public class TEMP_SystemActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * On space station pressed.
+     *
+     * @param view the view
+     */
     public void onSpaceStationPressed(View view) {
         Intent spaceStation = new Intent(this, TEMP_SpaceportActivity.class);
         startActivity(spaceStation);
     }
+
+    /**
+     * On market place pressed.
+     *
+     * @param view the view
+     */
     public void onMarketPlacePressed(View view) {
         Intent marketPlace = new Intent(this, TEMP_MarketplaceActivity.class);
         startActivity(marketPlace);

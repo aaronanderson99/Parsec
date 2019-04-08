@@ -24,6 +24,9 @@ import com.example.parsec.model.Player;
 import java.io.File;
 import java.util.Arrays;
 
+/**
+ * The type Configuration activity.
+ */
 public class ConfigurationActivity extends AppCompatActivity {
 
     private ConfigurationViewModel configViewModel;
@@ -65,6 +68,11 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * On continue pressed.
+     *
+     * @param view the view
+     */
     public void onContinuePressed(View view) {
         int pilotPoints = Integer.parseInt(pilotSkillPointsInput.getText().toString());
         int fighterPoints = Integer.parseInt(fighterSkillPointsInput.getText().toString());
@@ -89,11 +97,22 @@ public class ConfigurationActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * On cancel pressed.
+     *
+     * @param view the view
+     */
     public void onCancelPressed(View view) {
         Toast.makeText(this.getApplicationContext(), "Game creation canceled",
                 Toast.LENGTH_LONG).show();
         finish();
     }
+
+    /**
+     * On quit pressed.
+     *
+     * @param view the view
+     */
     public void onQuitPressed(View view) {
         finish();
     }
@@ -101,6 +120,11 @@ public class ConfigurationActivity extends AppCompatActivity {
 
     private Game game = Game.getInstance();
 
+    /**
+     * Create player.
+     *
+     * @param player the player
+     */
     public void createPlayer(Player player) {
         game.setPlayer(player);
         game.setUniverse(Universe.generateDefaultUniverse());
@@ -122,6 +146,11 @@ public class ConfigurationActivity extends AppCompatActivity {
         game.saveJson(new File(this.getFilesDir(), "game.json"));
     }
 
+    /**
+     * Update game difficulty.
+     *
+     * @param difficulty the difficulty
+     */
     public void updateGameDifficulty(Difficulty difficulty) {
         game.setDifficulty(difficulty);
     }

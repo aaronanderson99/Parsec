@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.parsec.R;
 
+/**
+ * The type Marketplace fragment.
+ */
 public class MarketplaceFragment extends Fragment {
 
     @Nullable

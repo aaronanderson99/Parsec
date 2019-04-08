@@ -24,6 +24,9 @@ import com.example.parsec.model.System;
 import java.io.File;
 import java.util.Arrays;
 
+/**
+ * The type Temp marketplace activity.
+ */
 public class TEMP_MarketplaceActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Spinner resourceSpinner;
@@ -69,7 +72,11 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
     }
 
 
-
+    /**
+     * On buy pressed.
+     *
+     * @param view the view
+     */
     public void onBuyPressed(View view) {
         Resource resource = (Resource) resourceSpinner.getSelectedItem();
         int num = Integer.parseInt(quantity.getText().toString());
@@ -84,6 +91,12 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
         update();
         game.saveJson(new File(this.getFilesDir(), "game.json"));
     }
+
+    /**
+     * On sell pressed.
+     *
+     * @param view the view
+     */
     public void onSellPressed(View view) {
         Resource resource = (Resource) resourceSpinner.getSelectedItem();
         int num = Integer.parseInt(quantity.getText().toString());
@@ -105,6 +118,9 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
+    /**
+     * Update.
+     */
     public void update() {
         double price = system.getMarket().getMarketPrice((Resource) resourceSpinner.getSelectedItem());
         double playerCredits = player.getCredits().getCredits();

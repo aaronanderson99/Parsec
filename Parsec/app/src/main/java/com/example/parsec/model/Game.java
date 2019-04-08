@@ -26,50 +26,94 @@ public class Game {
     /**
      * Default constructor
      */
-
     public Game() {
         this(new Player(), Universe.generateDefaultUniverse(), Difficulty.Easy);
     }
 
+    /**
+     * Instantiates a new Game.
+     *
+     * @param player     the player
+     * @param universe   the universe
+     * @param difficulty the difficulty
+     */
     public Game(Player player, Universe universe, Difficulty difficulty) {
         this.player = player;
         this.universe = universe;
         this.difficulty = difficulty;
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static Game getInstance() {
         return game;
     }
 
+    /**
+     * Gets player.
+     *
+     * @return the player
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * Sets player.
+     *
+     * @param player the player
+     */
     public void setPlayer(Player player) {
         this.player = player;
     }
 
+    /**
+     * Gets universe.
+     *
+     * @return the universe
+     */
     public Universe getUniverse() {
         return universe;
     }
 
+    /**
+     * Sets universe.
+     *
+     * @param universe the universe
+     */
     public void setUniverse(Universe universe) {
         this.universe = universe;
     }
 
+    /**
+     * Gets difficulty.
+     *
+     * @return the difficulty
+     */
     public Difficulty getDifficulty() {
         return difficulty;
     }
 
+    /**
+     * Sets difficulty.
+     *
+     * @param difficulty the difficulty
+     */
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
     }
 
 
-
-
-
-    // These JSON methods are adapted from Bob Water's AndroidPersistenceDemo
+    /**
+     * Save json boolean.
+     *
+     * @param file the file
+     * @return the boolean
+     */
+// These JSON methods are adapted from Bob Water's AndroidPersistenceDemo
     public boolean saveJson(File file) {
         try {
             PrintWriter writer = new PrintWriter(file);
@@ -86,6 +130,12 @@ public class Game {
         return true;
     }
 
+    /**
+     * Load json boolean.
+     *
+     * @param file the file
+     * @return the boolean
+     */
     public static boolean loadJson(File file) {
         try {
             BufferedReader input = new BufferedReader(new FileReader(file));

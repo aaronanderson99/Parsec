@@ -9,9 +9,17 @@ import com.example.parsec.model.Ship;
 import com.example.parsec.model.ShipType;
 import com.example.parsec.model.Universe;
 
+/**
+ * The type Configuration view model.
+ */
 public class ConfigurationViewModel {
     private Game game = Game.getInstance();
 
+    /**
+     * Create player.
+     *
+     * @param player the player
+     */
     public void createPlayer(Player player) {
         game.setPlayer(player);
         game.setUniverse(Universe.generateDefaultUniverse());
@@ -29,6 +37,11 @@ public class ConfigurationViewModel {
         Log.i("\nUniverse created successfully", "\n" + game.getUniverse().toString());
     }
 
+    /**
+     * Update game difficulty.
+     *
+     * @param difficulty the difficulty
+     */
     public void updateGameDifficulty(Difficulty difficulty) {
         game.setDifficulty(difficulty);
     }

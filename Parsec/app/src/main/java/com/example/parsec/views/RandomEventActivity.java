@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.example.parsec.R;
 import com.example.parsec.model.Game;
 
+/**
+ * The type Random event activity.
+ */
 public class RandomEventActivity extends AppCompatActivity {
 
 
@@ -27,6 +30,11 @@ public class RandomEventActivity extends AppCompatActivity {
         eventDescription.setText(Game.getInstance().getPlayer().getShip().getCurrentSystem().getEvent().getDescription());
     }
 
+    /**
+     * On continue pressed.
+     *
+     * @param view the view
+     */
     public void onContinuePressed(View view) {
         Intent cont = new Intent(this, TEMP_SystemActivity.class);
         startActivity(cont);
