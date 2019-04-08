@@ -1,9 +1,5 @@
 package com.example.parsec.model;
 
-import android.content.Intent;
-
-import com.example.parsec.views.TEMP_SystemActivity;
-
 import java.util.LinkedList;
 import java.util.List;
 

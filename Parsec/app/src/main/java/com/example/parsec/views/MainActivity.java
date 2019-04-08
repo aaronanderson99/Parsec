@@ -3,7 +3,6 @@ package com.example.parsec.views;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -11,7 +10,6 @@ import com.example.parsec.R;
 import com.example.parsec.model.Game;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 
 /**
  * The type Main activity.

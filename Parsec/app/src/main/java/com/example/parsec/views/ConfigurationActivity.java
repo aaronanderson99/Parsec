@@ -1,13 +1,11 @@
 package com.example.parsec.views;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -18,7 +16,6 @@ import com.example.parsec.model.Game;
 import com.example.parsec.model.Ship;
 import com.example.parsec.model.ShipType;
 import com.example.parsec.model.Universe;
-import com.example.parsec.viewmodels.ConfigurationViewModel;
 import com.example.parsec.model.Player;
 
 import java.io.File;
@@ -29,8 +26,6 @@ import java.util.Arrays;
  */
 public class ConfigurationActivity extends AppCompatActivity {
 
-    private ConfigurationViewModel configViewModel;
-
     private EditText playerNameInput;
     private Spinner difficultySpinner;
 
@@ -38,10 +33,6 @@ public class ConfigurationActivity extends AppCompatActivity {
     private EditText fighterSkillPointsInput;
     private EditText traderSkillPointsInput;
     private EditText engineerSkillPointsInput;
-
-    private Button continueButton;
-    private Button cancelButton;
-    private Button quitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +54,6 @@ public class ConfigurationActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
         difficultySpinner.setSelection(0);
-
-        configViewModel = new ConfigurationViewModel();
     }
 
 
@@ -92,7 +81,7 @@ public class ConfigurationActivity extends AppCompatActivity {
             Toast.makeText(this.getApplicationContext(), "New game created",
                     Toast.LENGTH_LONG).show();
 
-            Intent cont = new Intent(this, TEMP_SystemActivity.class); ////////////////// changed to TEMP_SystemActivity.class
+            Intent cont = new Intent(this, TEMP_SystemActivity.class);
             startActivity(cont);
         }
     }
@@ -140,9 +129,6 @@ public class ConfigurationActivity extends AppCompatActivity {
                 " " + player.getShip().getName());
 
         Log.i("\nUniverse created successfully", "\n" + game.getUniverse().toString());
-
-        //String saveName = player.getName() + ".json";
-
         game.saveJson(new File(this.getFilesDir(), "game.json"));
     }
 
