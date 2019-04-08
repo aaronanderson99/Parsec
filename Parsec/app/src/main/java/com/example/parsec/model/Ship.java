@@ -1,5 +1,9 @@
 package com.example.parsec.model;
 
+import android.content.Intent;
+
+import com.example.parsec.views.TEMP_SystemActivity;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,7 +49,8 @@ public class Ship {
         if(systemsInRange.contains(system)) {
             currentSystem = system;
             fuelTank.jump(system.getDistance());
-            system.getMarket().generateMarket();
+            RandomEvent.generateRandomEvent(system);
+            system.generateMarket();
             findSystemsInRange();
         }
     }

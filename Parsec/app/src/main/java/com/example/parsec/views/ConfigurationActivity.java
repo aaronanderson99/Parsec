@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,11 +14,14 @@ import android.widget.Toast;
 
 import com.example.parsec.R;
 import com.example.parsec.model.Difficulty;
+import com.example.parsec.model.Game;
 import com.example.parsec.model.Ship;
 import com.example.parsec.model.ShipType;
+import com.example.parsec.model.Universe;
 import com.example.parsec.viewmodels.ConfigurationViewModel;
 import com.example.parsec.model.Player;
 
+import java.io.File;
 import java.util.Arrays;
 
 public class ConfigurationActivity extends AppCompatActivity {
@@ -70,11 +74,13 @@ public class ConfigurationActivity extends AppCompatActivity {
             Toast.makeText(this.getApplicationContext(), "Skill points must sum to 16",
                     Toast.LENGTH_LONG).show();
         } else {
+            this.getFilesDir();
+
             String playerName = playerNameInput.getText().toString();
 
-            configViewModel.createPlayer(new Player(playerName, new Ship(ShipType.Gnat), pilotPoints, fighterPoints,
+            createPlayer(new Player(playerName, new Ship(ShipType.Gnat), pilotPoints, fighterPoints,
                     traderPoints, engineerPoints, 1000));
-            configViewModel.updateGameDifficulty((Difficulty) difficultySpinner.getSelectedItem());
+            updateGameDifficulty((Difficulty) difficultySpinner.getSelectedItem());
             Toast.makeText(this.getApplicationContext(), "New game created",
                     Toast.LENGTH_LONG).show();
 
@@ -90,5 +96,33 @@ public class ConfigurationActivity extends AppCompatActivity {
     }
     public void onQuitPressed(View view) {
         finish();
+    }
+
+
+    private Game game = Game.getInstance();
+
+    public void createPlayer(Player player) {
+        game.setPlayer(player);
+        game.setUniverse(Universe.generateDefaultUniverse());
+        player.getShip().setCurrentSystem(game.getUniverse().getSystem(5));
+        player.getShip().getCurrentSystem().getMarket().generateMarket();
+        player.getShip().findSystemsInRange();
+        Log.i("Player created successfully", "\n" + player.getName() +
+                String.format(" %d", player.getPilotSkill()) +
+                String.format(" %d", player.getFighterSkill()) +
+                String.format(" %d", player.getTraderSkill()) +
+                String.format(" %d", player.getEngineerSkill()) +
+                String.format(" %f", player.getCredits().getCredits()) +
+                " " + player.getShip().getName());
+
+        Log.i("\nUniverse created successfully", "\n" + game.getUniverse().toString());
+
+        //String saveName = player.getName() + ".json";
+
+        game.saveJson(new File(this.getFilesDir(), "game.json"));
+    }
+
+    public void updateGameDifficulty(Difficulty difficulty) {
+        game.setDifficulty(difficulty);
     }
 }

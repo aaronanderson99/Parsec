@@ -18,10 +18,12 @@ import com.example.parsec.model.Difficulty;
 import com.example.parsec.model.Game;
 import com.example.parsec.model.Market;
 import com.example.parsec.model.Player;
+import com.example.parsec.model.RandomEvent;
 import com.example.parsec.model.Resource;
 import com.example.parsec.model.Ship;
 import com.example.parsec.model.System;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -69,14 +71,16 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
 
 
     public void onRefuelPressed(View view) {
+        game.saveJson(new File(this.getFilesDir(), "game.json"));
         player.refuel();
         update();
     }
     public void onJumpPressed(View view) {
+        game.saveJson(new File(this.getFilesDir(), "game.json"));
         System newSystem = getSystem((String) systemSpinner.getSelectedItem());
         player.jump(newSystem);
-        Intent nextSystem = new Intent(this, TEMP_SystemActivity.class);
-        startActivity(nextSystem);
+        Intent randomEvent = new Intent(this, RandomEventActivity.class);
+        startActivity(randomEvent);
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -99,10 +103,10 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
         fuelCost.setText("" + Math.floor(playerFuelCost * 100) / 100);
         fuel.setText("" + playerFuel);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, convertList());
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        systemSpinner.setAdapter(adapter);
-        systemSpinner.setOnItemSelectedListener(this);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, convertList());
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //systemSpinner.setAdapter(adapter);
+        //systemSpinner.setOnItemSelectedListener(this);
     }
 
 

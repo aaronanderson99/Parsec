@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.parsec.R;
+import com.example.parsec.model.Game;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +27,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLoadGamePressed(View view) {
+        if(Game.loadJson(new File(this.getFilesDir(), "game.json"))) {
+            Toast.makeText(this.getApplicationContext(), "Game loaded successfully!",
+                    Toast.LENGTH_LONG).show();
+
+
+            Intent saveGame = new Intent(this, TEMP_SystemActivity.class);
+            startActivity(saveGame);
+        } else {
+            Toast.makeText(this.getApplicationContext(), "No game save found!",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
 }

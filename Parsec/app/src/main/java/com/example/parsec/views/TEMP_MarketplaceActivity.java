@@ -21,6 +21,7 @@ import com.example.parsec.model.Player;
 import com.example.parsec.model.Resource;
 import com.example.parsec.model.System;
 
+import java.io.File;
 import java.util.Arrays;
 
 public class TEMP_MarketplaceActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -70,6 +71,7 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
 
 
     public void onBuyPressed(View view) {
+        game.saveJson(new File(this.getFilesDir(), "game.json"));
         Resource resource = (Resource) resourceSpinner.getSelectedItem();
         int num = Integer.parseInt(quantity.getText().toString());
         if(game.getPlayer().buy(resource, num)) {
@@ -83,6 +85,7 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
         update();
     }
     public void onSellPressed(View view) {
+        game.saveJson(new File(this.getFilesDir(), "game.json"));
         Resource resource = (Resource) resourceSpinner.getSelectedItem();
         int num = Integer.parseInt(quantity.getText().toString());
         if(game.getPlayer().sell(resource, num)) {
