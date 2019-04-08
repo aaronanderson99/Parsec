@@ -4,15 +4,22 @@ public class Market {
     private double market[];
     private TechLevel techLevel;
     private Characteristic characteristic;
+    private RandomEvent event;
 
     public Market(TechLevel techLevel, Characteristic characteristic) {
         this.market = new double[Resource.values().length];
         this.techLevel = techLevel;
         this.characteristic = characteristic;
+        this.event = RandomEvent.Normal;
     }
 
     public double getMarketPrice(Resource resource) {
         return market[resource.getCode()];
+    }
+    public void setScareResource(Resource resource) {
+        if(event != RandomEvent.Normal) {
+            market[resource.getCode()] *= 5;
+        }
     }
 
     public boolean canBuy(Resource resource) {
@@ -48,6 +55,20 @@ public class Market {
             cost += techLevel.getLevelCode()*resources[i].getIPL();
             market[i] = cost;
         }
+        setScareResource(event.getAffectedResource());
+    }
+
+
+
+
+    public void setTechLevel(TechLevel techLevel) {
+        this.techLevel = techLevel;
+    }
+    public void setCharacteristic(Characteristic characteristic) {
+        this.characteristic = characteristic;
+    }
+    public void setEvent(RandomEvent event) {
+        this.event = event;
     }
 
 }

@@ -1,5 +1,7 @@
 package com.example.parsec.model;
 
+import java.util.Random;
+
 public class System {
     private int id;
     private String name;
@@ -9,6 +11,7 @@ public class System {
     private Characteristic characteristic;
     // Distance from current system. Used in jumping, only matters if the system is within range, else can be anything.
     private double distance;
+    private RandomEvent event;
 
     public System(int id, String name, TechLevel techLevel, Characteristic characteristic, Coordinate location) {
         this.id = id;
@@ -17,6 +20,7 @@ public class System {
         this.characteristic = characteristic;
         this.location = location;
         this.market = new Market(techLevel, characteristic);
+        this.event = RandomEvent.Normal;
     }
 
 
@@ -40,6 +44,9 @@ public class System {
     }
     public void setDistance(double distance) {
         this.distance = distance;
+    }
+    public void setEvent(RandomEvent event) {
+        this.event = event;
     }
 
     public String getName() {
@@ -65,5 +72,13 @@ public class System {
     }
     public double getDistance(System s2) {
         return location.getDistance(s2.getLocation());
+    }
+    public RandomEvent getEvent() {
+        return event;
+    }
+
+    public void generateMarket() {
+        market.setEvent(event);
+        market.generateMarket();
     }
 }
