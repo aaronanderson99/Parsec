@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import com.example.parsec.R;
 
+/**
+ * The type System activity.
+ */
 public class SystemActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView bottomNavigation;

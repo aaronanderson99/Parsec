@@ -28,6 +28,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * The type Temp spaceport activity.
+ */
 public class TEMP_SpaceportActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Spinner systemSpinner;
@@ -69,7 +72,11 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
     }
 
 
-
+    /**
+     * On refuel pressed.
+     *
+     * @param view the view
+     */
     public void onRefuelPressed(View view) {
         player.refuel();
 
@@ -81,6 +88,12 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
         update();
         game.saveJson(new File(this.getFilesDir(), "game.json"));
     }
+
+    /**
+     * On jump pressed.
+     *
+     * @param view the view
+     */
     public void onJumpPressed(View view) {
         System newSystem = getSystem((String) systemSpinner.getSelectedItem());
         player.jump(newSystem);
@@ -95,6 +108,9 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
+    /**
+     * Update.
+     */
     public void update() {
         System newSystem = getSystem((String) systemSpinner.getSelectedItem());
 

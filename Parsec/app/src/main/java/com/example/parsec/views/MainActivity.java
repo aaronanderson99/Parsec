@@ -13,6 +13,9 @@ import com.example.parsec.model.Game;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -21,11 +24,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    /**
+     * On new game pressed.
+     *
+     * @param view the view
+     */
     public void onNewGamePressed(View view) {
         Intent newGame = new Intent(this, ConfigurationActivity.class);
         startActivity(newGame);
     }
 
+    /**
+     * On load game pressed.
+     *
+     * @param view the view
+     */
     public void onLoadGamePressed(View view) {
         if(Game.loadJson(new File(this.getFilesDir(), "game.json"))) {
             Toast.makeText(this.getApplicationContext(), "Game loaded successfully!",

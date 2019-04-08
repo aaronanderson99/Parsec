@@ -5,11 +5,19 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The type Universe.
+ */
 public class Universe {
 
     private Map<Integer, System> systems = new HashMap();
     private int[][] map = new int[16][10];
 
+    /**
+     * Generate default universe universe.
+     *
+     * @return the universe
+     */
     public static Universe generateDefaultUniverse() {
         Universe universe = new Universe();
         for(int i = 0; i < universe.map.length; i++) {
@@ -139,9 +147,11 @@ public class Universe {
     }
 
 
-
-
-
+    /**
+     * Add system.
+     *
+     * @param system the system
+     */
     public void addSystem(System system) {
         if(map[system.getLocation().getX()][system.getLocation().getY()] != 0) {
             //System.out.println("System at that location already exists!");
@@ -154,25 +164,55 @@ public class Universe {
             map[system.getLocation().getX()][system.getLocation().getY()] = system.getId();
         }
     }
+
+    /**
+     * Remove system.
+     *
+     * @param id the id
+     */
     public void removeSystem(int id) {
         Coordinate c = systems.get(id).getLocation();
         map[c.getX()][c.getX()] = 0;
         systems.remove(id);
 
     }
+
+    /**
+     * Remove system.
+     *
+     * @param c the c
+     */
     public void removeSystem(Coordinate c) {
         int id = map[c.getX()][c.getY()];
         systems.remove(id);
         map[c.getX()][c.getY()] = 0;
     }
 
+    /**
+     * Gets system.
+     *
+     * @param id the id
+     * @return the system
+     */
     public System getSystem(int id) {
         return systems.get(id);
     }
+
+    /**
+     * Gets system.
+     *
+     * @param c the c
+     * @return the system
+     */
     public System getSystem(Coordinate c) {
         return systems.get(map[c.getX()][c.getY()]);
     }
 
+    /**
+     * Gets systems in range.
+     *
+     * @return the systems in range
+     */
     public List<System> getSystemsInRange() {
         List<System> systems = new LinkedList<System>();
         Ship ship = Game.getInstance().getPlayer().getShip();
@@ -194,6 +234,11 @@ public class Universe {
         return systems;
     }
 
+    /**
+     * Map to string string.
+     *
+     * @return the string
+     */
     public String mapToString() {
         String s = "";
         for(int i = 0; i < map.length; i++) {
