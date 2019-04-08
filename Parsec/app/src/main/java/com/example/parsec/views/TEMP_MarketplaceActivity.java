@@ -71,7 +71,6 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
 
 
     public void onBuyPressed(View view) {
-        game.saveJson(new File(this.getFilesDir(), "game.json"));
         Resource resource = (Resource) resourceSpinner.getSelectedItem();
         int num = Integer.parseInt(quantity.getText().toString());
         if(game.getPlayer().buy(resource, num)) {
@@ -83,9 +82,9 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
                     Toast.LENGTH_LONG).show();
         }
         update();
+        game.saveJson(new File(this.getFilesDir(), "game.json"));
     }
     public void onSellPressed(View view) {
-        game.saveJson(new File(this.getFilesDir(), "game.json"));
         Resource resource = (Resource) resourceSpinner.getSelectedItem();
         int num = Integer.parseInt(quantity.getText().toString());
         if(game.getPlayer().sell(resource, num)) {
@@ -97,6 +96,7 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
                     Toast.LENGTH_LONG).show();
         }
         update();
+        game.saveJson(new File(this.getFilesDir(), "game.json"));
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
