@@ -71,16 +71,22 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
 
 
     public void onRefuelPressed(View view) {
-        game.saveJson(new File(this.getFilesDir(), "game.json"));
         player.refuel();
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, convertList());
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        systemSpinner.setAdapter(adapter);
+        systemSpinner.setOnItemSelectedListener(this);
+
         update();
+        game.saveJson(new File(this.getFilesDir(), "game.json"));
     }
     public void onJumpPressed(View view) {
-        game.saveJson(new File(this.getFilesDir(), "game.json"));
         System newSystem = getSystem((String) systemSpinner.getSelectedItem());
         player.jump(newSystem);
         Intent randomEvent = new Intent(this, RandomEventActivity.class);
         startActivity(randomEvent);
+        game.saveJson(new File(this.getFilesDir(), "game.json"));
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -102,11 +108,6 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
         credits2.setText("" + Math.floor(playerCredits * 100) / 100);
         fuelCost.setText("" + Math.floor(playerFuelCost * 100) / 100);
         fuel.setText("" + playerFuel);
-
-        //ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, convertList());
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //systemSpinner.setAdapter(adapter);
-        //systemSpinner.setOnItemSelectedListener(this);
     }
 
 
