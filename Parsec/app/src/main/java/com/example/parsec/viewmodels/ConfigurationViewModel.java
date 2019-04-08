@@ -5,8 +5,6 @@ import android.util.Log;
 import com.example.parsec.model.Difficulty;
 import com.example.parsec.model.Player;
 import com.example.parsec.model.Game;
-import com.example.parsec.model.Ship;
-import com.example.parsec.model.ShipType;
 import com.example.parsec.model.Universe;
 
 /**

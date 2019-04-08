@@ -1,7 +1,5 @@
 apply plugin: 'com.android.application'
 
-//compile 'com.google.code.gson:gson:2.3'
-
 android {
     compileSdkVersion 28
     defaultConfig {

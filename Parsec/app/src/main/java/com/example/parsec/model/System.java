@@ -1,7 +1,5 @@
 package com.example.parsec.model;
 
-import java.util.Random;
-
 /**
  * The type System.
  */
