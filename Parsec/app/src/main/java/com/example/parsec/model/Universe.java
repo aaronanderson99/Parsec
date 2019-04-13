@@ -10,8 +10,9 @@ import java.util.Map;
  */
 public class Universe {
 
-    private Map<Integer, System> systems = new HashMap();
-    private int[][] map = new int[16][10];
+    private final HashMap<Integer, System> systems = new HashMap<>();
+    private final int[][] map = new int[16][10];
+    private int starterSystem;
 
     /**
      * Generate default universe universe.
@@ -20,6 +21,7 @@ public class Universe {
      */
     public static Universe generateDefaultUniverse() {
         Universe universe = new Universe();
+        universe.setStarterSystem();
         for(int i = 0; i < universe.map.length; i++) {
             for(int j = 0; j < universe.map[0].length; j++) {
                 universe.map[i][j] = 0;
@@ -152,60 +154,22 @@ public class Universe {
      *
      * @param system the system
      */
-    public void addSystem(System system) {
-        if(map[system.getLocation().getX()][system.getLocation().getY()] != 0) {
-            //System.out.println("System at that location already exists!");
-        }
-        else if(systems.containsKey(system.getId())) {
-            //System.out.println("System with that ID already exists!");
-        }
-        else {
+    private void addSystem(System system) {
+        if((map[system.getLocation().getX()][system.getLocation().getY()] == 0)
+                && !(systems.containsKey(system.getId()))) {
             systems.put(system.getId(), system);
             map[system.getLocation().getX()][system.getLocation().getY()] = system.getId();
         }
     }
 
     /**
-     * Remove system.
-     *
-     * @param id the id
-     */
-    public void removeSystem(int id) {
-        Coordinate c = systems.get(id).getLocation();
-        map[c.getX()][c.getX()] = 0;
-        systems.remove(id);
-
-    }
-
-    /**
-     * Remove system.
-     *
-     * @param c the c
-     */
-    public void removeSystem(Coordinate c) {
-        int id = map[c.getX()][c.getY()];
-        systems.remove(id);
-        map[c.getX()][c.getY()] = 0;
-    }
-
-    /**
      * Gets system.
      *
      * @param id the id
      * @return the system
      */
-    public System getSystem(int id) {
+    private System getSystem(int id) {
         return systems.get(id);
-    }
-
-    /**
-     * Gets system.
-     *
-     * @param c the c
-     * @return the system
-     */
-    public System getSystem(Coordinate c) {
-        return systems.get(map[c.getX()][c.getY()]);
     }
 
     /**
@@ -214,7 +178,7 @@ public class Universe {
      * @return the systems in range
      */
     public List<System> getSystemsInRange() {
-        List<System> systems = new LinkedList<System>();
+        List<System> systems = new LinkedList<>();
         Ship ship = Game.getInstance().getPlayer().getShip();
         double range = ship.getFuel();
         int x = ship.getCurrentSystem().getLocation().getX();
@@ -231,38 +195,30 @@ public class Universe {
                 }
             }
         }
+
         return systems;
     }
 
-    /**
-     * Map to string string.
-     *
-     * @return the string
-     */
-    public String mapToString() {
-        String s = "";
-        for(int i = 0; i < map.length; i++) {
-            for(int j = 0; j < map[0].length; j++) {
-                if(map[i][j] == 0) {
-                    s = s + "\t\t";
-                }
-                s = s + systems.get(map[i][j]).getName() + "\t";
-            }
-            s = s + "\n\n\n\n";
-        }
-        return s;
-    }
 
+    @Override
     public String toString() {
-        String s = "";
+        StringBuilder s = new StringBuilder();
 
         for (Map.Entry<Integer, System> entry : systems.entrySet()) {
             System sys = entry.getValue();
-            s = s + "Name: " + sys.getName() + "\t\tID: " + sys.getId() + "\t\tLocation: (" + sys.getLocation().getX() + ", " + sys.getLocation().getY()
-                    + ")\t\tTech Level: " + sys.getTechLevel().toString() + "\t\tCharacteristic: " + sys.getCharacteristic().toString() + "\n";
+            s.append("Name: ").append(sys.getName()).append("\t\tID: ").append(sys.getId()).append("\t\tLocation: (").append(sys.getLocation().getX()).append(", ").append(sys.getLocation().getY()).append(")\t\tTech Level: ").append(sys.getTechLevel().toString()).append("\t\tCharacteristic: ").append(sys.getCharacteristic().toString()).append("\n");
         }
 
-        return s;
+        return s.toString();
+    }
+
+
+    private void setStarterSystem() {
+        this.starterSystem = 5;
+    }
+
+    public System getStarterSystem() {
+        return getSystem(starterSystem);
     }
 
 }

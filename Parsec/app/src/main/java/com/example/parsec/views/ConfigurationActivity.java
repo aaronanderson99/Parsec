@@ -15,7 +15,6 @@ import com.example.parsec.model.Difficulty;
 import com.example.parsec.model.Game;
 import com.example.parsec.model.Ship;
 import com.example.parsec.model.ShipType;
-import com.example.parsec.model.Universe;
 import com.example.parsec.model.Player;
 
 import java.io.File;
@@ -67,17 +66,23 @@ public class ConfigurationActivity extends AppCompatActivity {
         int fighterPoints = Integer.parseInt(fighterSkillPointsInput.getText().toString());
         int traderPoints = Integer.parseInt(traderSkillPointsInput.getText().toString());
         int engineerPoints = Integer.parseInt(engineerSkillPointsInput.getText().toString());
+        String playerName = playerNameInput.getText().toString();
         if (pilotPoints + fighterPoints + traderPoints + engineerPoints != 16) {
             Toast.makeText(this.getApplicationContext(), "Skill points must sum to 16",
                     Toast.LENGTH_LONG).show();
         } else {
             this.getFilesDir();
+            Game.generateDefaultGame(new Player(playerName, new Ship(ShipType.Gnat), pilotPoints, fighterPoints,
+                    traderPoints, engineerPoints, 1000), (Difficulty) difficultySpinner.getSelectedItem());
+            Game game = Game.getInstance();
+            game.createPlayer();
 
-            String playerName = playerNameInput.getText().toString();
+            Log.i("Player created successfully", "\n" + game.playerToString());
+            Log.i("\nUniverse created successfully", "\n" + game.universeToString());
+            game.saveJson(new File(this.getFilesDir(), "game.json"));
+            game.setDifficulty((Difficulty) difficultySpinner.getSelectedItem());
 
-            createPlayer(new Player(playerName, new Ship(ShipType.Gnat), pilotPoints, fighterPoints,
-                    traderPoints, engineerPoints, 1000));
-            updateGameDifficulty((Difficulty) difficultySpinner.getSelectedItem());
+
             Toast.makeText(this.getApplicationContext(), "New game created",
                     Toast.LENGTH_LONG).show();
 
@@ -104,40 +109,5 @@ public class ConfigurationActivity extends AppCompatActivity {
      */
     public void onQuitPressed(View view) {
         finish();
-    }
-
-
-    private Game game = Game.getInstance();
-
-    /**
-     * Create player.
-     *
-     * @param player the player
-     */
-    public void createPlayer(Player player) {
-        game.setPlayer(player);
-        game.setUniverse(Universe.generateDefaultUniverse());
-        player.getShip().setCurrentSystem(game.getUniverse().getSystem(5));
-        player.getShip().getCurrentSystem().getMarket().generateMarket();
-        player.getShip().findSystemsInRange();
-        Log.i("Player created successfully", "\n" + player.getName() +
-                String.format(" %d", player.getPilotSkill()) +
-                String.format(" %d", player.getFighterSkill()) +
-                String.format(" %d", player.getTraderSkill()) +
-                String.format(" %d", player.getEngineerSkill()) +
-                String.format(" %f", player.getCredits().getCredits()) +
-                " " + player.getShip().getName());
-
-        Log.i("\nUniverse created successfully", "\n" + game.getUniverse().toString());
-        game.saveJson(new File(this.getFilesDir(), "game.json"));
-    }
-
-    /**
-     * Update game difficulty.
-     *
-     * @param difficulty the difficulty
-     */
-    public void updateGameDifficulty(Difficulty difficulty) {
-        game.setDifficulty(difficulty);
     }
 }

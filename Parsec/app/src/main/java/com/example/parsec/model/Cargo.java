@@ -4,17 +4,10 @@ package com.example.parsec.model;
  * The type Cargo.
  */
 public class Cargo {
-    private int cargo[];
+    private final int[] cargo;
     private final int maxCargo;
     private int cargoFilled;
 
-
-    /**
-     * Instantiates a new Cargo.
-     */
-    public Cargo() {
-        this(10);
-    }
 
     /**
      * Instantiates a new Cargo.

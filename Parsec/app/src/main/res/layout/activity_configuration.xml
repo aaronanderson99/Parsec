@@ -1,7 +1,6 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/content_edit_student"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
@@ -13,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Game"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,19 +23,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
         android:text="Name:"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_game_title" />
 
     <EditText
         android:id="@+id/player_name_input"
+        android:labelFor="@+id/player_name_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/name_header" />
+        app:layout_constraintTop_toBottomOf="@id/name_header"
+        android:autofillHints="" />
 
 
     <TextView
@@ -45,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
         android:text="Difficulty:"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/player_name_input" />
 
@@ -64,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="38dp"
         android:text="Skill Points (must total to 16):"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/difficulty_spinner" />
 
@@ -72,7 +73,7 @@
         android:id="@+id/pilot_skill_points_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:text="Pilot:"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,20 +81,22 @@
 
     <EditText
         android:id="@+id/pilot_skill_points_input"
+        android:labelFor="@+id/pilot_skill_points_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
         android:inputType="number"
         android:text="4"
-        android:textSize="12dp"
+        android:textSize="12sp"
         app:layout_constraintBaseline_toBaselineOf="@id/pilot_skill_points_label"
-        app:layout_constraintLeft_toRightOf="@id/pilot_skill_points_label" />
+        app:layout_constraintLeft_toRightOf="@id/pilot_skill_points_label"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/fighter_skill_points_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:text="Fighter:"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,20 +104,22 @@
 
     <EditText
         android:id="@+id/fighter_skill_points_input"
+        android:labelFor="@+id/fighter_skill_points_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:text="4"
-        android:textSize="12dp"
+        android:textSize="12sp"
         app:layout_constraintBaseline_toBaselineOf="@id/fighter_skill_points_label"
         app:layout_constraintLeft_toRightOf="@id/fighter_skill_points_label"
-        app:layout_constraintStart_toStartOf="@id/pilot_skill_points_input" />
+        app:layout_constraintStart_toStartOf="@id/pilot_skill_points_input"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/trader_skill_points_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:text="Trader:"
         app:layout_constraintStart_toStartOf="parent"
@@ -122,20 +127,22 @@
 
     <EditText
         android:id="@+id/trader_skill_points_input"
+        android:labelFor="@+id/trader_skill_points_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:text="4"
-        android:textSize="12dp"
+        android:textSize="12sp"
         app:layout_constraintBaseline_toBaselineOf="@id/trader_skill_points_label"
         app:layout_constraintLeft_toRightOf="@id/trader_skill_points_label"
-        app:layout_constraintStart_toStartOf="@id/pilot_skill_points_input" />
+        app:layout_constraintStart_toStartOf="@id/pilot_skill_points_input"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/engineer_skill_points_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="20dp"
         android:text="Engineer:"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,18 +150,19 @@
 
     <EditText
         android:id="@+id/engineer_skill_points_input"
+        android:labelFor="@+id/engineer_skill_points_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:text="4"
-        android:textSize="12dp"
+        android:textSize="12sp"
         app:layout_constraintBaseline_toBaselineOf="@id/engineer_skill_points_label"
         app:layout_constraintLeft_toRightOf="@id/engineer_skill_points_label"
-        app:layout_constraintStart_toStartOf="@id/pilot_skill_points_input" />
+        app:layout_constraintStart_toStartOf="@id/pilot_skill_points_input"
+        android:importantForAutofill="no" />
 
 
     <Button
-        android:id="@+id/continue_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -165,7 +173,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/cancel_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
