@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,6 +17,7 @@ import com.example.parsec.model.System;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * The type Temp spaceport activity.
@@ -29,8 +29,6 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
     private TextView credits2;
     private TextView fuel;
     private TextView fuelCost;
-    private Button refuel;
-    private Button jump;
     private Game game;
     private Player player;
 
@@ -48,9 +46,8 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
         credits2 = findViewById(R.id.credits2);
         fuel = findViewById(R.id.fuel);
         fuelCost = findViewById(R.id.fuel_cost);
-        refuel = findViewById(R.id.refuel_button);
-        jump = findViewById(R.id.jump_button);
 
+        player.getShip().findSystemsInRange();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, convertList());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -59,7 +56,6 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
         systemSpinner.setOnItemSelectedListener(this);
 
         update();
-
     }
 
 
@@ -93,19 +89,21 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
         game.saveJson(new File(this.getFilesDir(), "game.json"));
     }
 
+    @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         update();
     }
+    @Override
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
     /**
      * Update.
      */
-    public void update() {
+    private void update() {
         System newSystem = getSystem((String) systemSpinner.getSelectedItem());
 
-        double systemDistance = newSystem.getDistance();
+        double systemDistance = Objects.requireNonNull(newSystem).getDistance();
         double playerCredits = player.getCredits().getCredits();
         String playerFuel = Math.floor(player.getShip().getFuel() * 100) / 100 + " / " + Math.floor(player.getShip().getMaxFuel() * 100) / 100;
         double playerFuelCost = 10 * player.getShip().getFuelSpace();

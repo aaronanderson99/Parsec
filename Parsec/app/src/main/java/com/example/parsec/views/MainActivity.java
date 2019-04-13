@@ -51,4 +51,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onQuitPressed(View view) {
+        finish();
+    }
 }

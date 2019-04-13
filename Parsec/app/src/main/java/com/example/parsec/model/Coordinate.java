@@ -4,8 +4,8 @@ package com.example.parsec.model;
  * The type Coordinate.
  */
 public class Coordinate {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     /**
      * Instantiates a new Coordinate.
@@ -15,24 +15,6 @@ public class Coordinate {
      */
     public Coordinate(int x, int y) {
         this.x = x;
-        this.y = y;
-    }
-
-    /**
-     * Sets x.
-     *
-     * @param x the x
-     */
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    /**
-     * Sets y.
-     *
-     * @param y the y
-     */
-    public void setY(int y) {
         this.y = y;
     }
 
@@ -54,13 +36,4 @@ public class Coordinate {
         return this.y;
     }
 
-    /**
-     * Gets distance.
-     *
-     * @param p2 the p 2
-     * @return the distance
-     */
-    public double getDistance(Coordinate p2) {
-        return Math.sqrt((this.x - p2.x)*(this.x - p2.x) + (this.y - p2.y)*(this.y - p2.y));
-    }
 }

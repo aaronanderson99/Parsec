@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.parsec.R;
@@ -16,13 +15,6 @@ import com.example.parsec.model.System;
  */
 public class TEMP_SystemActivity extends AppCompatActivity {
 
-    private TextView systemName;
-    private TextView techLevel;
-    private TextView characteristic;
-
-    private Button spaceStation;
-    private Button marketPlace;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,17 +24,13 @@ public class TEMP_SystemActivity extends AppCompatActivity {
         System system = game.getPlayer().getShip().getCurrentSystem();
 
 
-        systemName = findViewById(R.id.system_name);
-        techLevel = findViewById(R.id.tech_level);
-        characteristic = findViewById(R.id.characteristic);
+        TextView systemName = findViewById(R.id.system_name);
+        TextView techLevel = findViewById(R.id.tech_level);
+        TextView characteristic = findViewById(R.id.characteristic);
 
         systemName.setText(system.getName());
         techLevel.setText(system.getTechLevel().toString());
         characteristic.setText(system.getCharacteristic().toString());
-
-        spaceStation = findViewById(R.id.space_station_button);
-        marketPlace = findViewById(R.id.marketplace_button);
-
     }
 
     /**

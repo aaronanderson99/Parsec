@@ -4,12 +4,12 @@ package com.example.parsec.model;
  * The type System.
  */
 public class System {
-    private int id;
-    private String name;
-    private Coordinate location;
-    private Market market;
-    private TechLevel techLevel;
-    private Characteristic characteristic;
+    private final int id;
+    private final String name;
+    private final Coordinate location;
+    private final Market market;
+    private final TechLevel techLevel;
+    private final Characteristic characteristic;
     // Distance from current system. Used in jumping, only matters if the system is within range, else can be anything.
     private double distance;
     private RandomEvent event;
@@ -33,60 +33,6 @@ public class System {
         this.event = RandomEvent.Normal;
     }
 
-
-    /**
-     * Sets name.
-     *
-     * @param name the name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Sets id.
-     *
-     * @param id the id
-     */
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    /**
-     * Sets location.
-     *
-     * @param location the location
-     */
-    public void setLocation(Coordinate location) {
-        this.location = location;
-    }
-
-    /**
-     * Sets tech level.
-     *
-     * @param techLevel the tech level
-     */
-    public void setTechLevel(TechLevel techLevel) {
-        this.techLevel = techLevel;
-    }
-
-    /**
-     * Sets characteristic.
-     *
-     * @param characteristic the characteristic
-     */
-    public void setCharacteristic(Characteristic characteristic) {
-        this.characteristic = characteristic;
-    }
-
-    /**
-     * Sets market.
-     *
-     * @param market the market
-     */
-    public void setMarket(Market market) {
-        this.market = market;
-    }
 
     /**
      * Sets distance.
@@ -167,16 +113,6 @@ public class System {
      */
     public double getDistance() {
         return this.distance;
-    }
-
-    /**
-     * Gets distance.
-     *
-     * @param s2 the s 2
-     * @return the distance
-     */
-    public double getDistance(System s2) {
-        return location.getDistance(s2.getLocation());
     }
 
     /**

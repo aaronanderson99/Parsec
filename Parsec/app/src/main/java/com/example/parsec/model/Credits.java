@@ -8,13 +8,6 @@ public class Credits {
 
     /**
      * Instantiates a new Credits.
-     */
-    public Credits() {
-        this(1000);
-    }
-
-    /**
-     * Instantiates a new Credits.
      *
      * @param credits the credits
      */
@@ -32,20 +25,14 @@ public class Credits {
     }
 
     /**
-     * Buy boolean.
+     * Buy.
      *
      * @param cost the cost
-     * @return the boolean
      */
-    public boolean buy(double cost) {
+    public void buy(double cost) {
         if(cost < credits) {
             credits -= cost;
-            return true;
         }
-        else {
-            return false;
-        }
-
     }
 
     /**

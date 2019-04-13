@@ -36,7 +36,7 @@ public enum RandomEvent {
      *
      * @return the event code
      */
-    public int getEventCode() {
+    private int getEventCode() {
         return this.eventCode;
     }
 
@@ -70,9 +70,9 @@ public enum RandomEvent {
         // therefore, there is a 33% chance of the "Normal" event, and each of the others are equally likely.
         int code = (int) (Math.random() * events.length * 1.5);
         RandomEvent event = Normal;
-        for(int i = 0; i < events.length; i++) {
-            if (events[i].getEventCode() == code)
-                event =  events[i];
+        for (RandomEvent event1 : events) {
+            if (event1.getEventCode() == code)
+                event = event1;
         }
         system.setEvent(event);
     }

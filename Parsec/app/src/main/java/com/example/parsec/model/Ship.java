@@ -7,11 +7,11 @@ import java.util.List;
  * The type Ship.
  */
 public class Ship {
-    private ShipType type;
+    private final ShipType type;
     private System currentSystem;
-    private List<System> systemsInRange = new LinkedList<System>();
-    private Cargo cargo;
-    private FuelTank fuelTank;
+    private List<System> systemsInRange = new LinkedList<>();
+    private final Cargo cargo;
+    private final FuelTank fuelTank;
 
 
     /**
@@ -32,15 +32,6 @@ public class Ship {
      */
     public ShipType getName() {
         return type;
-    }
-
-    /**
-     * Sets name.
-     *
-     * @param type the type
-     */
-    public void setName(ShipType type) {
-        this.type = type;
     }
 
     /**
@@ -157,5 +148,10 @@ public class Ship {
     public double getMaxFuel() {
         return fuelTank.getMaxFuel();
     }
+
+    public void generateMarket() {
+        currentSystem.generateMarket();
+    }
+
 
 }

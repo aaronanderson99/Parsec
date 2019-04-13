@@ -7,28 +7,20 @@ public enum ShipType {
     /**
      * Gnat ship type.
      */
-    Gnat("Gnat", 10, 10);
+    Gnat(10, 10),
+    Wasp(15, 15),
+    Hornet(20, 20),
+    Dragonfly(25, 25);
 
-    private final String typeName;
     private final int maxCargo;
     private final double maxFuel;
 
 
-    ShipType(String typeName, int maxCargo, double maxFuel) {
-        this.typeName = typeName;
+    ShipType(int maxCargo, double maxFuel) {
         this.maxCargo = maxCargo;
         this.maxFuel = maxFuel;
     }
 
-
-    /**
-     * Gets type.
-     *
-     * @return the type
-     */
-    public String getType() {
-        return this.typeName;
-    }
 
     /**
      * Gets max cargo.
