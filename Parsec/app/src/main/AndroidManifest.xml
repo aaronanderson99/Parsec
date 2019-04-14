@@ -28,7 +28,8 @@
             android:parentActivityName=".views.MainActivity" />
 
 
-        <!-- TEMP_SystemActivity and TEMP_MarketplaceActivity were made last minute SOLELY for the M7 demo, we are NOT keeping them. -->
+        <!-- TEMP_SystemActivity and TEMP_MarketplaceActivity were made
+        last minute SOLELY for the M7 demo, we are NOT keeping them. -->
         <activity
             android:name=".views.TEMP_SystemActivity" />
         <activity

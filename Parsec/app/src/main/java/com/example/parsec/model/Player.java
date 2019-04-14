@@ -27,7 +27,8 @@ public class Player {
      * @param engineerSkill the engineer skill
      * @param credits       the credits
      */
-    public Player(String name, Ship ship, int pilotSkill, int fighterSkill, int traderSkill, int engineerSkill, double credits) {
+    public Player(String name, Ship ship, int pilotSkill, int fighterSkill, int traderSkill,
+                  int engineerSkill, double credits) {
         this.name = name;
         this.ship = ship;
         this.pilotSkill = pilotSkill;
@@ -129,14 +130,24 @@ public class Player {
                 "\nShip:             " + ship.getName();
     }
 
+    /**
+     * sets the current system with a provided System object
+     * @param system Inputted System object to be set
+     */
     public void setCurrentSystem(System system) {
         ship.setCurrentSystem(system);
     }
 
+    /**
+     * invokes the generateMarket() method from the Ship object
+     */
     public void generateMarket() {
         ship.generateMarket();
     }
 
+    /**
+     * invokes the findSystemsInRange() method from the Ship object
+     */
     public void findSystemsInRange() {
         ship.findSystemsInRange();
     }

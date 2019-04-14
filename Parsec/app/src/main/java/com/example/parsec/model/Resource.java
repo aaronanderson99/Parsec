@@ -56,7 +56,8 @@ public enum Resource {
 
 
 
-    Resource(int code, double basePrice, int MTLP, int MTLU, int IPL, double var, Characteristic CR) {
+    Resource(int code, double basePrice, int MTLP, int MTLU, int IPL, double var,
+             Characteristic CR)  {
         this.code = code;
         this.basePrice = basePrice;
         this.MTLP = MTLP;

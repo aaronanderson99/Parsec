@@ -22,7 +22,8 @@ import java.util.Objects;
 /**
  * The type Temp spaceport activity.
  */
-public class TEMP_SpaceportActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class TEMP_SpaceportActivity extends AppCompatActivity
+        implements AdapterView.OnItemSelectedListener {
 
     private Spinner systemSpinner;
     private TextView distance;
@@ -49,7 +50,8 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
 
         player.getShip().findSystemsInRange();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, convertList());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, convertList());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         systemSpinner.setAdapter(adapter);
         systemSpinner.setSelection(0);
@@ -67,7 +69,8 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
     public void onRefuelPressed(View view) {
         player.refuel();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, convertList());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, convertList());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         systemSpinner.setAdapter(adapter);
         systemSpinner.setOnItemSelectedListener(this);
@@ -105,14 +108,19 @@ public class TEMP_SpaceportActivity extends AppCompatActivity implements Adapter
 
         double systemDistance = Objects.requireNonNull(newSystem).getDistance();
         double playerCredits = player.getCredits().getCredits();
-        String playerFuel = Math.floor(player.getShip().getFuel() * 100) / 100 + " / " + Math.floor(player.getShip().getMaxFuel() * 100) / 100;
+        String playerFuel = Math.floor(player.getShip().getFuel() * 100) / 100 +
+                " / " + Math.floor(player.getShip().getMaxFuel() * 100) / 100;
         double playerFuelCost = 10 * player.getShip().getFuelSpace();
 
+        String distanceText = "" + (Math.floor(systemDistance * 100) / 100);
+        String credits2Text = "" + (Math.floor(playerCredits * 100) / 100);
+        String fuelCostText = "" + (Math.floor(playerFuelCost * 100) / 100);
+        String fuelText = "" + playerFuel;
 
-        distance.setText("" + Math.floor(systemDistance * 100) / 100);
-        credits2.setText("" + Math.floor(playerCredits * 100) / 100);
-        fuelCost.setText("" + Math.floor(playerFuelCost * 100) / 100);
-        fuel.setText("" + playerFuel);
+        distance.setText(distanceText);
+        credits2.setText(credits2Text);
+        fuelCost.setText(fuelCostText);
+        fuel.setText(fuelText);
     }
 
 

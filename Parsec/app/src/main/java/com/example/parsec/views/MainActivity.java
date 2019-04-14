@@ -51,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * On quit game pressed.
+     *
+     * @param view the view
+     */
     public void onQuitPressed(View view) {
         finish();
     }

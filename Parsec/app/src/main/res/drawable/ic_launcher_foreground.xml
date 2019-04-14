@@ -1,3 +1,5 @@
+<!--suppress ALL, LongLine -->
+
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     android:width="108dp"
@@ -25,6 +27,7 @@
             </gradient>
         </aapt:attr>
     </path>
+    <!--suppress LongLine -->
     <path
         android:fillColor="#FFFFFF"
         android:fillType="nonZero"

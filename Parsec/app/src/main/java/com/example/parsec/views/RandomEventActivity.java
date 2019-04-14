@@ -21,7 +21,8 @@ public class RandomEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_random_event);
         setTitle("Random Event");
         TextView eventDescription = findViewById(R.id.random_event_description);
-        eventDescription.setText(Game.getInstance().getPlayer().getShip().getCurrentSystem().getEvent().getDescription());
+        eventDescription.setText(Game.getInstance().getPlayer().getShip()
+                .getCurrentSystem().getEvent().getDescription());
     }
 
     /**

@@ -149,6 +149,9 @@ public class Ship {
         return fuelTank.getMaxFuel();
     }
 
+    /**
+     * invokes the generateMarket() method from the System object
+     */
     public void generateMarket() {
         currentSystem.generateMarket();
     }

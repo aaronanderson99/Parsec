@@ -10,7 +10,8 @@ public class System {
     private final Market market;
     private final TechLevel techLevel;
     private final Characteristic characteristic;
-    // Distance from current system. Used in jumping, only matters if the system is within range, else can be anything.
+    // Distance from current system. Used in jumping, only matters if the system is within range,
+    // else can be anything.
     private double distance;
     private RandomEvent event;
 
@@ -23,7 +24,8 @@ public class System {
      * @param characteristic the characteristic
      * @param location       the location
      */
-    public System(int id, String name, TechLevel techLevel, Characteristic characteristic, Coordinate location) {
+    public System(int id, String name, TechLevel techLevel, Characteristic characteristic,
+                  Coordinate location) {
         this.id = id;
         this.name = name;
         this.techLevel = techLevel;

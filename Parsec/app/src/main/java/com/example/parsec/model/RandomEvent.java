@@ -12,11 +12,13 @@ public enum RandomEvent {
     /**
      * The Drought.
      */
-    Drought(0, Resource.Water, "Reports suggest a severe drought in this system. The price of water has increased greatly!"),
+    Drought(0, Resource.Water, "Reports suggest a severe drought in this system." +
+            "The price of water has increased greatly!"),
     /**
      * The Famine.
      */
-    Famine(1, Resource.Food, "Reports suggest a severe famine in this system. The price of food has increased greatly!");
+    Famine(1, Resource.Food, "Reports suggest a severe famine in this system. The price of food" +
+            "has increased greatly!");
 
 
     private final int eventCode;
@@ -67,7 +69,8 @@ public enum RandomEvent {
     public static void generateRandomEvent(System system) {
         RandomEvent[] events = RandomEvent.values();
         // There is a 33% chance that code is greater than the highest event code,
-        // therefore, there is a 33% chance of the "Normal" event, and each of the others are equally likely.
+        // therefore, there is a 33% chance of the "Normal" event,
+        // and each of the others are equally likely.
         int code = (int) (Math.random() * events.length * 1.5);
         RandomEvent event = Normal;
         for (RandomEvent event1 : events) {

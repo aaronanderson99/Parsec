@@ -48,8 +48,8 @@ public class ConfigurationActivity extends AppCompatActivity {
         traderSkillPointsInput = findViewById(R.id.trader_skill_points_input);
         engineerSkillPointsInput = findViewById(R.id.engineer_skill_points_input);
 
-        ArrayAdapter<Difficulty> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
-                Arrays.asList(Difficulty.values()));
+        ArrayAdapter<Difficulty> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, Arrays.asList(Difficulty.values()));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
         difficultySpinner.setSelection(0);
@@ -72,8 +72,9 @@ public class ConfigurationActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         } else {
             this.getFilesDir();
-            Game.generateDefaultGame(new Player(playerName, new Ship(ShipType.Gnat), pilotPoints, fighterPoints,
-                    traderPoints, engineerPoints, 1000), (Difficulty) difficultySpinner.getSelectedItem());
+            Game.generateDefaultGame(new Player(playerName, new Ship(ShipType.Gnat), pilotPoints,
+                    fighterPoints, traderPoints, engineerPoints, 1000),
+                    (Difficulty) difficultySpinner.getSelectedItem());
             Game game = Game.getInstance();
             game.createPlayer();
 

@@ -87,6 +87,9 @@ public class Game {
         this.difficulty = difficulty;
     }
 
+    /**
+     * Instantiates a player object
+     */
     public void createPlayer() {
         player.setCurrentSystem(game.getStarterSystem());
         player.generateMarket();
@@ -95,10 +98,20 @@ public class Game {
         game.setUniverse(Universe.generateDefaultUniverse());
     }
 
+    /**
+     * Returns a String representation of a Player object
+     *
+     * @return a string representation of Player
+     */
     public String playerToString() {
         return player.toString();
     }
 
+    /**
+     * Returns a String representation of a Universe object
+     *
+     * @return a string representation of Universe
+     */
     public String universeToString() {
         return universe.toString();
     }
@@ -147,6 +160,13 @@ public class Game {
     private System getStarterSystem() {
         return universe.getStarterSystem();
     }
+
+    /**
+     * Generates a default Game Object when no parameters are provided in the constructor
+     *
+     * @param player the default player object provided
+     * @param difficulty the default difficulty for the game
+     */
 
     public static void generateDefaultGame(Player player, Difficulty difficulty) {
         game = new Game(player, Universe.generateDefaultUniverse(), difficulty);

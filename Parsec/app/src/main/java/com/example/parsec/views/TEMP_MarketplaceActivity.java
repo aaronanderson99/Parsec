@@ -22,7 +22,8 @@ import java.util.Arrays;
 /**
  * The type Temp marketplace activity.
  */
-public class TEMP_MarketplaceActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class TEMP_MarketplaceActivity extends AppCompatActivity
+        implements AdapterView.OnItemSelectedListener {
 
     private Spinner resourceSpinner;
     private TextView cost;
@@ -53,7 +54,8 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
         quantity.setText("1");
 
 
-        ArrayAdapter<Resource> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+        ArrayAdapter<Resource> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item,
                 Arrays.asList(Resource.values()));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         resourceSpinner.setAdapter(adapter);
@@ -115,15 +117,23 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
      * Update.
      */
     private void update() {
-        double price = system.getMarket().getMarketPrice((Resource) resourceSpinner.getSelectedItem());
+        double price = system.getMarket().getMarketPrice((Resource)
+                resourceSpinner.getSelectedItem());
         double playerCredits = player.getCredits().getCredits();
-        String playerCargo = player.getShip().getCargo().getCargoFilled() + " / " + player.getShip().getCargo().getMaxCargo();
-        int inPlayerCargo = player.getShip().getCargo().getCargoStock((Resource) resourceSpinner.getSelectedItem());
+        String playerCargo = player.getShip().getCargo().getCargoFilled() + " / " +
+                player.getShip().getCargo().getMaxCargo();
+        int inPlayerCargo = player.getShip().getCargo().getCargoStock((Resource)
+                resourceSpinner.getSelectedItem());
 
-        cost.setText("" + Math.floor(price * 100) / 100);
-        credits.setText("" + Math.floor(playerCredits * 100) / 100);
-        cargo.setText("" + playerCargo);
-        inCargo.setText("" + inPlayerCargo);
+        String costText = "" + (Math.floor(price * 100) / 100);
+        String creditsText = "" + (Math.floor(playerCredits * 100) / 100);
+        String cargoText = "" + playerCargo;
+        String inCargoText = "" + inPlayerCargo;
+
+        cost.setText(costText);
+        credits.setText(creditsText);
+        cargo.setText(cargoText);
+        inCargo.setText(inCargoText);
     }
 
 
