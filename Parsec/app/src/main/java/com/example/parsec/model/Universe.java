@@ -185,7 +185,7 @@ public class Universe {
      *
      * @param system the system
      */
-    private void addSystem(System system) {
+    public void addSystem(System system) {
         if((map[system.getLocation().getX()][system.getLocation().getY()] == 0)
                 && !(systems.containsKey(system.getId()))) {
             systems.put(system.getId(), system);
@@ -250,7 +250,7 @@ public class Universe {
     }
 
 
-    private void setStarterSystem() {
+    public void setStarterSystem() {
         this.starterSystem = 5;
     }
 
@@ -261,5 +261,11 @@ public class Universe {
     public System getStarterSystem() {
         return getSystem(starterSystem);
     }
+
+    /**
+     * Returns the number of systems
+     * @return the int of systems
+     */
+    public int getSystemsCount() { return systems.size();}
 
 }
