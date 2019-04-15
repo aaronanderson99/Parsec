@@ -98,8 +98,5 @@ public class SellUnitTest {
         assertEquals(creditsBefore, player.getCredits().getCredits());
         assertEquals(incargoBefore, player.getShip().getCargo().getCargoStock(Resource.Water));
     }
-
-
-
-
+    
 }
