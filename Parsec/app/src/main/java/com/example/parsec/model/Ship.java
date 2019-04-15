@@ -1,9 +1,5 @@
 package com.example.parsec.model;
 
-import android.content.Intent;
-
-import com.example.parsec.views.TEMP_SystemActivity;
-
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,11 +7,11 @@ import java.util.List;
  * The type Ship.
  */
 public class Ship {
-    private ShipType type;
+    private final ShipType type;
     private System currentSystem;
-    private List<System> systemsInRange = new LinkedList<System>();
-    private Cargo cargo;
-    private FuelTank fuelTank;
+    private List<System> systemsInRange = new LinkedList<>();
+    private final Cargo cargo;
+    private final FuelTank fuelTank;
 
 
     /**
@@ -36,15 +32,6 @@ public class Ship {
      */
     public ShipType getName() {
         return type;
-    }
-
-    /**
-     * Sets name.
-     *
-     * @param type the type
-     */
-    public void setName(ShipType type) {
-        this.type = type;
     }
 
     /**
@@ -154,6 +141,15 @@ public class Ship {
     }
 
     /**
+     * Gets fuel tank.
+     *
+     * @return the fuel tank
+     */
+    public FuelTank getFuelTank() {
+        return this.fuelTank;
+    }
+
+    /**
      * Gets max fuel.
      *
      * @return the max fuel
@@ -161,5 +157,10 @@ public class Ship {
     public double getMaxFuel() {
         return fuelTank.getMaxFuel();
     }
+
+    public void generateMarket() {
+        currentSystem.generateMarket();
+    }
+
 
 }

@@ -1,27 +1,20 @@
 package com.example.parsec.model;
 
+
 /**
  * The type Player.
  */
 public class Player {
-    private String name;
-    private Ship ship;
+    private final String name;
+    private final Ship ship;
 
-    private int pilotSkill;
-    private int fighterSkill;
-    private int traderSkill;
-    private int engineerSkill;
+    private final int pilotSkill;
+    private final int fighterSkill;
+    private final int traderSkill;
+    private final int engineerSkill;
 
-    private Credits credits;
+    private final Credits credits;
 
-
-    /**
-     * Default constructor, creates new Player named Bob,
-     * with 16 skill points divided evenly across attributes
-     */
-    public Player() {
-        this("Bob", new Ship(ShipType.Gnat), 4, 4, 4, 4, 1000);
-    }
 
     /**
      * Instantiates a new Player.
@@ -45,111 +38,12 @@ public class Player {
     }
 
     /**
-     * Gets name.
-     *
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets name.
-     *
-     * @param name the name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
      * Gets ship.
      *
      * @return the ship
      */
     public Ship getShip() {
         return ship;
-    }
-
-    /**
-     * Sets ship.
-     *
-     * @param ship the ship
-     */
-    public void setShip(Ship ship) {
-        this.ship = ship;
-    }
-
-    /**
-     * Gets pilot skill.
-     *
-     * @return the pilot skill
-     */
-    public int getPilotSkill() {
-        return pilotSkill;
-    }
-
-    /**
-     * Sets pilot skill.
-     *
-     * @param pilotSkill the pilot skill
-     */
-    public void setPilotSkill(int pilotSkill) {
-        this.pilotSkill = pilotSkill;
-    }
-
-    /**
-     * Gets fighter skill.
-     *
-     * @return the fighter skill
-     */
-    public int getFighterSkill() {
-        return fighterSkill;
-    }
-
-    /**
-     * Sets fighter skill.
-     *
-     * @param fighterSkill the fighter skill
-     */
-    public void setFighterSkill(int fighterSkill) {
-        this.fighterSkill = fighterSkill;
-    }
-
-    /**
-     * Gets trader skill.
-     *
-     * @return the trader skill
-     */
-    public int getTraderSkill() {
-        return traderSkill;
-    }
-
-    /**
-     * Sets trader skill.
-     *
-     * @param traderSkill the trader skill
-     */
-    public void setTraderSkill(int traderSkill) {
-        this.traderSkill = traderSkill;
-    }
-
-    /**
-     * Gets engineer skill.
-     *
-     * @return the engineer skill
-     */
-    public int getEngineerSkill() {
-        return engineerSkill;
-    }
-
-    /**
-     * Sets engineer skill.
-     *
-     * @param engineerSkill the engineer skill
-     */
-    public void setEngineerSkill(int engineerSkill) {
-        this.engineerSkill = engineerSkill;
     }
 
     /**
@@ -215,18 +109,36 @@ public class Player {
     }
 
     /**
-     * Refuel boolean.
-     *
-     * @return the boolean
+     * Refuel.
      */
 // returns true if successful, false if unsuccessful
-    public boolean refuel() {
+    public void refuel() {
         if(credits.getCredits() < ship.getFuelSpace() * 10) {
-            return false;
+            return;
         }
         credits.buy(ship.getFuelSpace() * 10);
         ship.refuel();
-        return true;
+    }
+
+    public String toString() {
+        return  name  +
+                "\nPilot Skill:      " + pilotSkill +
+                "\nFighter Skill:    " + fighterSkill +
+                "\nTrader Skill:     " + traderSkill +
+                "\nEngineer Skill:   " + engineerSkill +
+                "\nShip:             " + ship.getName();
+    }
+
+    public void setCurrentSystem(System system) {
+        ship.setCurrentSystem(system);
+    }
+
+    public void generateMarket() {
+        ship.generateMarket();
+    }
+
+    public void findSystemsInRange() {
+        ship.findSystemsInRange();
     }
 
 }

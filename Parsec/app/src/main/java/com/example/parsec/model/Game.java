@@ -1,15 +1,12 @@
 package com.example.parsec.model;
 
 import android.util.Log;
-import android.widget.Toast;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import com.google.gson.Gson;
 
 /**
@@ -21,14 +18,7 @@ public class Game {
     private Universe universe;
     private Difficulty difficulty;
 
-    private static Game game = new Game();
-
-    /**
-     * Default constructor
-     */
-    public Game() {
-        this(new Player(), Universe.generateDefaultUniverse(), Difficulty.Easy);
-    }
+    private static Game game;
 
     /**
      * Instantiates a new Game.
@@ -37,7 +27,7 @@ public class Game {
      * @param universe   the universe
      * @param difficulty the difficulty
      */
-    public Game(Player player, Universe universe, Difficulty difficulty) {
+    private Game(Player player, Universe universe, Difficulty difficulty) {
         this.player = player;
         this.universe = universe;
         this.difficulty = difficulty;
@@ -66,7 +56,7 @@ public class Game {
      *
      * @param player the player
      */
-    public void setPlayer(Player player) {
+    private void setPlayer(Player player) {
         this.player = player;
     }
 
@@ -84,17 +74,8 @@ public class Game {
      *
      * @param universe the universe
      */
-    public void setUniverse(Universe universe) {
+    private void setUniverse(Universe universe) {
         this.universe = universe;
-    }
-
-    /**
-     * Gets difficulty.
-     *
-     * @return the difficulty
-     */
-    public Difficulty getDifficulty() {
-        return difficulty;
     }
 
     /**
@@ -106,15 +87,29 @@ public class Game {
         this.difficulty = difficulty;
     }
 
+    public void createPlayer() {
+        player.setCurrentSystem(game.getStarterSystem());
+        player.generateMarket();
+        player.findSystemsInRange();
+        game.setPlayer(player);
+        game.setUniverse(Universe.generateDefaultUniverse());
+    }
 
+    public String playerToString() {
+        return player.toString();
+    }
+
+    public String universeToString() {
+        return universe.toString();
+    }
+
+    // These JSON methods are adapted from Bob Water's AndroidPersistenceDemo
     /**
-     * Save json boolean.
+     * Save json.
      *
      * @param file the file
-     * @return the boolean
      */
-// These JSON methods are adapted from Bob Water's AndroidPersistenceDemo
-    public boolean saveJson(File file) {
+    public void saveJson(File file) {
         try {
             PrintWriter writer = new PrintWriter(file);
             Gson gson = new Gson();
@@ -124,10 +119,8 @@ public class Game {
             writer.close();
         } catch (FileNotFoundException e) {
             Log.e("UserManagementFacade", "Failed to open json file for output");
-            return false;
         }
 
-        return true;
     }
 
     /**
@@ -149,6 +142,14 @@ public class Game {
             return false;
         }
         return true;
+    }
+
+    private System getStarterSystem() {
+        return universe.getStarterSystem();
+    }
+
+    public static void generateDefaultGame(Player player, Difficulty difficulty) {
+        game = new Game(player, Universe.generateDefaultUniverse(), difficulty);
     }
 
 }

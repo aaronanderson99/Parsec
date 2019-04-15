@@ -35,27 +35,17 @@ public class RefuelTest {
         fueltank.jump(50); //fuel level is now 50
         double space = fueltank.getFuelSpace(); //its 50
 
-        boolean output1;
-
-        //100<500, so fuel cannot be purchased
-        output1 = player.refuel();
-
-        assertFalse(output1);
-
-        //fuelSpace should have decreased by amount jumped
-        assertEquals(space, 50);
+        //100 (amount of credits) < 500 (fuelSpace * 10), so fuel cannot be purchased
+        //fuelSpace should have decreased by amount jumped, and not refueled to 100
+        assertEquals(50.0, space);
     }
 
     @Test
     public void refuelWhenEnoughFuel() throws Exception {
 
-        fueltank.jump(99);
-        double space = fueltank.getFuelSpace(); //should be 1
+        fueltank.jump(99); //makes fuelLevel = 1
+        double space = fueltank.getFuelSpace(); //should be 99 before refueling, 0 after
 
-        boolean output2 = player2.refuel();
-
-        assertTrue(output2);
-        assertEquals(space, 1);
+        assertEquals(100, space);
     }
-
 }

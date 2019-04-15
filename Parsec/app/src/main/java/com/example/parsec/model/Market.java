@@ -4,9 +4,9 @@ package com.example.parsec.model;
  * The type Market.
  */
 public class Market {
-    private double market[];
-    private TechLevel techLevel;
-    private Characteristic characteristic;
+    private final double[] market;
+    private final TechLevel techLevel;
+    private final Characteristic characteristic;
     private RandomEvent event;
 
     /**
@@ -33,11 +33,21 @@ public class Market {
     }
 
     /**
+     * Sets market price.
+     *
+     * @param resource the resource
+     * @param price the price
+     */
+    public void setMarketPrice(Resource resource, double price) {
+        market[resource.getCode()] = price;
+    }
+
+    /**
      * Sets scare resource.
      *
      * @param resource the resource
      */
-    public void setScareResource(Resource resource) {
+    private void setScarceResource(Resource resource) {
         if(event != RandomEvent.Normal) {
             market[resource.getCode()] *= 5;
         }
@@ -50,12 +60,7 @@ public class Market {
      * @return the boolean
      */
     public boolean canBuy(Resource resource) {
-        if(resource.getMTLP() > techLevel.getLevelCode()) {
-            return false;   // Tech Level too low!
-        }
-        else {
-            return true;   // All good!
-        }
+        return resource.getMTLP() <= techLevel.getLevelCode();
     }
 
     /**
@@ -65,12 +70,7 @@ public class Market {
      * @return the boolean
      */
     public boolean canSell(Resource resource) {
-        if(resource.getMTLU() > techLevel.getLevelCode()) {
-            return false;   // Tech Level too low!
-        }
-        else {
-            return true;   // All good!
-        }
+        return resource.getMTLU() <= techLevel.getLevelCode();
     }
 
     /**
@@ -92,27 +92,9 @@ public class Market {
             cost += techLevel.getLevelCode()*resources[i].getIPL();
             market[i] = cost;
         }
-        setScareResource(event.getAffectedResource());
+        setScarceResource(event.getAffectedResource());
     }
 
-
-    /**
-     * Sets tech level.
-     *
-     * @param techLevel the tech level
-     */
-    public void setTechLevel(TechLevel techLevel) {
-        this.techLevel = techLevel;
-    }
-
-    /**
-     * Sets characteristic.
-     *
-     * @param characteristic the characteristic
-     */
-    public void setCharacteristic(Characteristic characteristic) {
-        this.characteristic = characteristic;
-    }
 
     /**
      * Sets event.

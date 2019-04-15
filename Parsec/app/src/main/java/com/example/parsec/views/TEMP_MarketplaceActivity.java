@@ -1,22 +1,17 @@
 package com.example.parsec.views;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.parsec.R;
-import com.example.parsec.model.Difficulty;
 import com.example.parsec.model.Game;
-import com.example.parsec.model.Market;
 import com.example.parsec.model.Player;
 import com.example.parsec.model.Resource;
 import com.example.parsec.model.System;
@@ -34,8 +29,6 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
     private TextView credits;
     private TextView inCargo;
     private TextView cargo;
-    private Button buy;
-    private Button sell;
     private EditText quantity;
     private Game game;
     private Player player;
@@ -56,8 +49,6 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
         credits = findViewById(R.id.credits);
         inCargo = findViewById(R.id.in_cargo);
         cargo = findViewById(R.id.cargo);
-        buy = findViewById(R.id.buy_button);
-        sell = findViewById(R.id.sell_button);
         quantity = findViewById(R.id.quantity);
         quantity.setText("1");
 
@@ -112,16 +103,18 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity implements Adapt
         game.saveJson(new File(this.getFilesDir(), "game.json"));
     }
 
+    @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         update();
     }
+    @Override
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
     /**
      * Update.
      */
-    public void update() {
+    private void update() {
         double price = system.getMarket().getMarketPrice((Resource) resourceSpinner.getSelectedItem());
         double playerCredits = player.getCredits().getCredits();
         String playerCargo = player.getShip().getCargo().getCargoFilled() + " / " + player.getShip().getCargo().getMaxCargo();

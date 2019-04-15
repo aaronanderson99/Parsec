@@ -1,13 +1,11 @@
 package com.example.parsec.views;
 
-import android.arch.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -17,8 +15,6 @@ import com.example.parsec.model.Difficulty;
 import com.example.parsec.model.Game;
 import com.example.parsec.model.Ship;
 import com.example.parsec.model.ShipType;
-import com.example.parsec.model.Universe;
-import com.example.parsec.viewmodels.ConfigurationViewModel;
 import com.example.parsec.model.Player;
 
 import java.io.File;
@@ -29,8 +25,6 @@ import java.util.Arrays;
  */
 public class ConfigurationActivity extends AppCompatActivity {
 
-    private ConfigurationViewModel configViewModel;
-
     private EditText playerNameInput;
     private Spinner difficultySpinner;
 
@@ -38,10 +32,6 @@ public class ConfigurationActivity extends AppCompatActivity {
     private EditText fighterSkillPointsInput;
     private EditText traderSkillPointsInput;
     private EditText engineerSkillPointsInput;
-
-    private Button continueButton;
-    private Button cancelButton;
-    private Button quitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +53,6 @@ public class ConfigurationActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficultySpinner.setAdapter(adapter);
         difficultySpinner.setSelection(0);
-
-        configViewModel = new ConfigurationViewModel();
     }
 
 
@@ -78,21 +66,27 @@ public class ConfigurationActivity extends AppCompatActivity {
         int fighterPoints = Integer.parseInt(fighterSkillPointsInput.getText().toString());
         int traderPoints = Integer.parseInt(traderSkillPointsInput.getText().toString());
         int engineerPoints = Integer.parseInt(engineerSkillPointsInput.getText().toString());
+        String playerName = playerNameInput.getText().toString();
         if (pilotPoints + fighterPoints + traderPoints + engineerPoints != 16) {
             Toast.makeText(this.getApplicationContext(), "Skill points must sum to 16",
                     Toast.LENGTH_LONG).show();
         } else {
             this.getFilesDir();
+            Game.generateDefaultGame(new Player(playerName, new Ship(ShipType.Gnat), pilotPoints, fighterPoints,
+                    traderPoints, engineerPoints, 1000), (Difficulty) difficultySpinner.getSelectedItem());
+            Game game = Game.getInstance();
+            game.createPlayer();
 
-            String playerName = playerNameInput.getText().toString();
+            Log.i("Player created successfully", "\n" + game.playerToString());
+            Log.i("\nUniverse created successfully", "\n" + game.universeToString());
+            game.saveJson(new File(this.getFilesDir(), "game.json"));
+            game.setDifficulty((Difficulty) difficultySpinner.getSelectedItem());
 
-            createPlayer(new Player(playerName, new Ship(ShipType.Gnat), pilotPoints, fighterPoints,
-                    traderPoints, engineerPoints, 1000));
-            updateGameDifficulty((Difficulty) difficultySpinner.getSelectedItem());
+
             Toast.makeText(this.getApplicationContext(), "New game created",
                     Toast.LENGTH_LONG).show();
 
-            Intent cont = new Intent(this, TEMP_SystemActivity.class); ////////////////// changed to TEMP_SystemActivity.class
+            Intent cont = new Intent(this, TEMP_SystemActivity.class);
             startActivity(cont);
         }
     }
@@ -115,43 +109,5 @@ public class ConfigurationActivity extends AppCompatActivity {
      */
     public void onQuitPressed(View view) {
         finish();
-    }
-
-
-    private Game game = Game.getInstance();
-
-    /**
-     * Create player.
-     *
-     * @param player the player
-     */
-    public void createPlayer(Player player) {
-        game.setPlayer(player);
-        game.setUniverse(Universe.generateDefaultUniverse());
-        player.getShip().setCurrentSystem(game.getUniverse().getSystem(5));
-        player.getShip().getCurrentSystem().getMarket().generateMarket();
-        player.getShip().findSystemsInRange();
-        Log.i("Player created successfully", "\n" + player.getName() +
-                String.format(" %d", player.getPilotSkill()) +
-                String.format(" %d", player.getFighterSkill()) +
-                String.format(" %d", player.getTraderSkill()) +
-                String.format(" %d", player.getEngineerSkill()) +
-                String.format(" %f", player.getCredits().getCredits()) +
-                " " + player.getShip().getName());
-
-        Log.i("\nUniverse created successfully", "\n" + game.getUniverse().toString());
-
-        //String saveName = player.getName() + ".json";
-
-        game.saveJson(new File(this.getFilesDir(), "game.json"));
-    }
-
-    /**
-     * Update game difficulty.
-     *
-     * @param difficulty the difficulty
-     */
-    public void updateGameDifficulty(Difficulty difficulty) {
-        game.setDifficulty(difficulty);
     }
 }

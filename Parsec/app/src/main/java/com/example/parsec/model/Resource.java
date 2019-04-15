@@ -8,45 +8,44 @@ public enum Resource {
     /**
      * Water resource.
      */
-    Water("Water", 0, 30, 0, 0, 3, 4, Characteristic.LOTSOFWATER),
+    Water(0, 30, 0, 0, 3, 4, Characteristic.LOTSOFWATER),
     /**
      * Furs resource.
      */
-    Furs("Furs", 1, 250, 0, 0, 10, 10, Characteristic.RICHFAUNA),
+    Furs(1, 250, 0, 0, 10, 10, Characteristic.RICHFAUNA),
     /**
      * Food resource.
      */
-    Food("Food", 2, 100, 1, 0, 5, 5, Characteristic.RICHSOIL),
+    Food(2, 100, 1, 0, 5, 5, Characteristic.RICHSOIL),
     /**
      * Ore resource.
      */
-    Ore("Ore", 3, 350, 2, 2, 20, 10, Characteristic.MINERALRICH),
+    Ore(3, 350, 2, 2, 20, 10, Characteristic.MINERALRICH),
     /**
      * Games resource.
      */
-    Games("Games", 4, 250, 3, 1, -10, 5, Characteristic.ARTISTIC),
+    Games(4, 250, 3, 1, -10, 5, Characteristic.ARTISTIC),
     /**
      * Firearms resource.
      */
-    Firearms("Firearms", 5, 1250, 3, 1, -75, 100, Characteristic.WARLIKE),
+    Firearms(5, 1250, 3, 1, -75, 100, Characteristic.WARLIKE),
     /**
      * Medicine resource.
      */
-    Medicine("Medicine", 6, 650, 4, 1, -20, 10, Characteristic.LOTSOFHERBS),
+    Medicine(6, 650, 4, 1, -20, 10, Characteristic.LOTSOFHERBS),
     /**
      * Machines resource.
      */
-    Machines("Machines", 7, 900, 4, 3, -30, 5, null),
+    Machines(7, 900, 4, 3, -30, 5, null),
     /**
      * Narcotics resource.
      */
-    Narcotics("Narcotics", 8, 3500, 5, 0, -125, 150, Characteristic.LOTSOFWATER),
+    Narcotics(8, 3500, 5, 0, -125, 150, Characteristic.LOTSOFWATER),
     /**
      * Robots resource.
      */
-    Robots("Robots", 9, 5000, 6, 4, -150, 100, null);
+    Robots(9, 5000, 6, 4, -150, 100, null);
 
-    private final String name;
     private final int code;
     private final double basePrice;
     private final int MTLP;
@@ -57,8 +56,7 @@ public enum Resource {
 
 
 
-    Resource(String name, int code, double basePrice, int MTLP, int MTLU, int IPL, double var, Characteristic CR) {
-        this.name = name;
+    Resource(int code, double basePrice, int MTLP, int MTLU, int IPL, double var, Characteristic CR) {
         this.code = code;
         this.basePrice = basePrice;
         this.MTLP = MTLP;
@@ -66,15 +64,6 @@ public enum Resource {
         this.IPL = IPL;
         this.var = var;
         this.CR = CR;
-    }
-
-    /**
-     * Gets name.
-     *
-     * @return the name
-     */
-    public String getName() {
-        return this.name;
     }
 
     /**

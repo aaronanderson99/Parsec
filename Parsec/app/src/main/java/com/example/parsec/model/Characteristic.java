@@ -7,91 +7,49 @@ public enum Characteristic {
     /**
      * Nospecialresources characteristic.
      */
-    NOSPECIALRESOURCES(0),
+    NOSPECIALRESOURCES(),
     /**
      * Mineralrich characteristic.
      */
-    MINERALRICH(1),
+    MINERALRICH(),
     /**
      * Desert characteristic.
      */
-    DESERT(2),
+    DESERT(),
     /**
      * Lotsofwater characteristic.
      */
-    LOTSOFWATER(3),
+    LOTSOFWATER(),
     /**
      * Richsoil characteristic.
      */
-    RICHSOIL(4),
+    RICHSOIL(),
     /**
      * Poorsoil characteristic.
      */
-    POORSOIL(5),
+    POORSOIL(),
     /**
      * Richfauna characteristic.
      */
-    RICHFAUNA(6),
+    RICHFAUNA(),
     /**
      * Lifeless characteristic.
      */
-    LIFELESS(7),
+    LIFELESS(),
     /**
      * Weirdmushrooms characteristic.
      */
-    WEIRDMUSHROOMS(8),
+    WEIRDMUSHROOMS(),
     /**
      * Lotsofherbs characteristic.
      */
-    LOTSOFHERBS(9),
+    LOTSOFHERBS(),
     /**
      * Artistic characteristic.
      */
-    ARTISTIC(10),
+    ARTISTIC(),
     /**
      * Warlike characteristic.
      */
-    WARLIKE(11);
-
-
-    /*
-    [water]         Drought
-    [furs]          Cold
-    [food]          Famine
-    [ore]
-    [games]         Boredom
-    [firearms]      War
-    [medicine]      Plague
-    [machines]
-    [narcotics]
-    [robots]
-     */
-
-    /*
-    [water]         LOTSOFWATER
-    [furs]          RICHFUANA
-    [food]          RICHSOIL
-    [ore]
-    [games]         ARTISTIC
-    [firearms]      WARLIKE
-    [medicine]
-    [machines]      LIFELESS
-    [narcotics]     WEIRDMUSHROOMS
-    [robots]
-     */
-
-    private final int characteristicCode;
-
-    Characteristic(int characteristicCode) {
-        this.characteristicCode = characteristicCode;
-    }
-
-    /**
-     * Gets characteristic code.
-     *
-     * @return the characteristic code
-     */
-    public int getCharacteristicCode() {
-        return this.characteristicCode;
-    }
+    WARLIKE()
 }
