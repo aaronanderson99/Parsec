@@ -8,9 +8,9 @@ public enum ShipType {
      * Gnat ship type.
      */
     Gnat(10, 10),
-    Wasp(15, 15),
-    Hornet(20, 20),
-    Dragonfly(25, 25);
+    Wasp(25, 25),
+    Hornet(50, 50),
+    Dragonfly(100, 100);
 
     private final int maxCargo;
     private final double maxFuel;

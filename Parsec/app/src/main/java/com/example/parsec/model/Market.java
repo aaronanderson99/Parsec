@@ -33,11 +33,21 @@ public class Market {
     }
 
     /**
+     * Sets market price.
+     *
+     * @param resource the resource
+     * @param price the price
+     */
+    public void setMarketPrice(Resource resource, double price) {
+        market[resource.getCode()] = price;
+    }
+
+    /**
      * Sets scare resource.
      *
      * @param resource the resource
      */
-    private void setScareResource(Resource resource) {
+    private void setScarceResource(Resource resource) {
         if(event != RandomEvent.Normal) {
             market[resource.getCode()] *= 5;
         }
@@ -82,7 +92,7 @@ public class Market {
             cost += techLevel.getLevelCode()*resources[i].getIPL();
             market[i] = cost;
         }
-        setScareResource(event.getAffectedResource());
+        setScarceResource(event.getAffectedResource());
     }
 
 
