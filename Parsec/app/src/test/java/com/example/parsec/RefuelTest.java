@@ -1,5 +1,9 @@
-package com.example.parsec.model;
+package com.example.parsec;
 
+import com.example.parsec.model.Player;
+import com.example.parsec.model.Ship;
+import com.example.parsec.model.ShipType;
+import com.example.parsec.model.FuelTank;
 import org.junit.Before;
 import org.junit.Test;
 

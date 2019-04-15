@@ -3,7 +3,7 @@ package com.example.parsec.model;
 /**
  * The type Fuel tank.
  */
-class FuelTank {
+public class FuelTank {
     private final double maxFuel;
     private double fuelLevel;
 
