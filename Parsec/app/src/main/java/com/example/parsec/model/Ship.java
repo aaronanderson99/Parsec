@@ -132,6 +132,15 @@ public class Ship {
     }
 
     /**
+     * Gets fuelTank.
+     *
+     * @return the fuelTank
+     */
+    public FuelTank getFuelTank() {
+        return this.fuelTank;
+    }
+
+    /**
      * Gets fuel space.
      *
      * @return the fuel space
