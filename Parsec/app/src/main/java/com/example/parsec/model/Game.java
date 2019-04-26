@@ -1,13 +1,29 @@
 package com.example.parsec.model;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.parsec.views.GameStartActivity;
+import com.example.parsec.views.MainActivity;
 import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Singleton class that holds game state
@@ -120,41 +136,92 @@ public class Game {
     /**
      * Save json.
      *
-     * @param file the file
      */
-    public void saveJson(File file) {
+    public void saveJson(final Context context) {
+        //create request body
+        JSONObject requestBody = new JSONObject();
         try {
-            PrintWriter writer = new PrintWriter(file);
             Gson gson = new Gson();
             String outString = gson.toJson(game);
             Log.d("DEBUG", "JSON Saved: " + outString);
-            writer.println(outString);
-            writer.close();
-        } catch (FileNotFoundException e) {
-            Log.e("UserManagementFacade", "Failed to open json file for output");
+            requestBody.put("username", MainActivity.username);
+            requestBody.put("password", MainActivity.password);
+            requestBody.put("game", outString);
+        } catch (JSONException e) {
+            Log.e("UserManagementFacade", "Error parsing Json data");
         }
 
+        RequestQueue queue = Volley.newRequestQueue(context);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                MainActivity.HEROKU_URL + "/api/gameState", requestBody, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    if (response.getInt("code") == 500) {
+                        Toast.makeText(context, "Server error saving game, try again",
+                                Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(context, "Game saved successfully",
+                                Toast.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    Toast.makeText(context, "Game saved",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "Game saved",
+                        Toast.LENGTH_LONG).show();
+                java.lang.System.out.println(error);
+            }
+        });
+
+        queue.add(jsonObjectRequest);
     }
 
     /**
      * Load json boolean.
      *
-     * @param file the file
      * @return the boolean
      */
-    public static boolean loadJson(File file) {
+    public static void loadJson(final StateChangeCallable cb, Context context) {
+        JSONObject jsonLogin = new JSONObject();
         try {
-            BufferedReader input = new BufferedReader(new FileReader(file));
-            String inString = input.readLine();
-            Log.d("DEBUG", "JSON: " + inString);
-            Gson gson = new Gson();
-            game = gson.fromJson(inString, Game.class);
-            input.close();
-        } catch (IOException e) {
-            Log.e("UserManagementFacade", "Failed to open/read the buffered reader for json");
-            return false;
+            jsonLogin.put("username", MainActivity.username);
+            jsonLogin.put("password", MainActivity.password);
+//            Log.d("DEBUG", "Username: " + jsonLogin.getString("username"));
+//            Log.d("DEBUG", "Password " + jsonLogin.getString("password"));
+        } catch (JSONException e) {
+            //more high quality error logging (:
+            java.lang.System.out.println(e);
+            cb.callback(false);
         }
-        return true;
+
+        RequestQueue queue = Volley.newRequestQueue(context);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST,
+                MainActivity.HEROKU_URL + "/api/getGameState", jsonLogin, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    Gson gson = new Gson();
+                    game = gson.fromJson(response.getString("game"), Game.class);
+                    cb.callback(true);
+                } catch (JSONException e) {
+                    Log.e("UserManagementFacade", "Failed to open/read the json");
+                    cb.callback(false);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                java.lang.System.out.println(error);
+                cb.callback(false);
+            }
+        });
+
+        queue.add(jsonObjectRequest);
     }
 
     private System getStarterSystem() {
@@ -172,4 +239,8 @@ public class Game {
         game = new Game(player, Universe.generateDefaultUniverse(), difficulty);
     }
 
+
+    public interface StateChangeCallable {
+        void callback(boolean success);
+    }
 }

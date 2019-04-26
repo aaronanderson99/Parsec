@@ -76,7 +76,7 @@ public class TEMP_SpaceportActivity extends AppCompatActivity
         systemSpinner.setOnItemSelectedListener(this);
 
         update();
-        game.saveJson(new File(this.getFilesDir(), "game.json"));
+        game.saveJson(this.getApplicationContext());
     }
 
     /**
@@ -89,7 +89,7 @@ public class TEMP_SpaceportActivity extends AppCompatActivity
         player.jump(newSystem);
         Intent randomEvent = new Intent(this, RandomEventActivity.class);
         startActivity(randomEvent);
-        game.saveJson(new File(this.getFilesDir(), "game.json"));
+        game.saveJson(this.getApplicationContext());
     }
 
     @Override

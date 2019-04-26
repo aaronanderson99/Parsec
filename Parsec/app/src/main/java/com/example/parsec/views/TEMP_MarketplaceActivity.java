@@ -82,7 +82,7 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity
                     Toast.LENGTH_LONG).show();
         }
         update();
-        game.saveJson(new File(this.getFilesDir(), "game.json"));
+        game.saveJson(this.getApplicationContext());
     }
 
     /**
@@ -102,7 +102,7 @@ public class TEMP_MarketplaceActivity extends AppCompatActivity
                     Toast.LENGTH_LONG).show();
         }
         update();
-        game.saveJson(new File(this.getFilesDir(), "game.json"));
+        game.saveJson(this.getApplicationContext());
     }
 
     @Override

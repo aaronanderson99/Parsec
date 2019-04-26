@@ -80,7 +80,7 @@ public class ConfigurationActivity extends AppCompatActivity {
 
             Log.i("Player created successfully", "\n" + game.playerToString());
             Log.i("\nUniverse created successfully", "\n" + game.universeToString());
-            game.saveJson(new File(this.getFilesDir(), "game.json"));
+            game.saveJson(this.getApplicationContext());
             game.setDifficulty((Difficulty) difficultySpinner.getSelectedItem());
 
 
